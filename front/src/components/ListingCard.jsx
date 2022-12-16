@@ -9,7 +9,7 @@ const ListingCard = ({car}) => {
   const badges = [];
 
   car.values.map(badge => badges.push(
-    <Badge key={uuid()}bg="secondary">{badge}</Badge>)
+    <Badge key={uuid()} bg="secondary" style={{ margin:"2px"}}>{badge}</Badge>)
   );
 
   return (

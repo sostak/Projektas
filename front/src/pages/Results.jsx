@@ -65,7 +65,9 @@ const Results = () => {
     },
   ];
 
-  listings.map(listing => cards.push(<ListingCard key={listing.key} car={listing}></ListingCard>));
+  listings.map(listing => cards.push(
+    <ListingCard key={listing.key} car={listing}></ListingCard>)
+  );
 
   return (
     <Row>
