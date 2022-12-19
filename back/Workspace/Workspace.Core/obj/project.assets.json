@@ -1,0 +1,126 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "Workspace.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Workspace.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Workspace.Domain.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Workspace.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Workspace.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Workspace.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Workspace.Infrastructure.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      }
+    }
+  },
+  "libraries": {
+    "Workspace.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Workspace.Domain/Workspace.Domain.csproj",
+      "msbuildProject": "../Workspace.Domain/Workspace.Domain.csproj"
+    },
+    "Workspace.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../Workspace.Infrastructure/Workspace.Infrastructure.csproj",
+      "msbuildProject": "../Workspace.Infrastructure/Workspace.Infrastructure.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "Workspace.Domain >= 1.0.0",
+      "Workspace.Infrastructure >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\nojus\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\nojus\\Desktop\\Praktika\\PC project\\Projektas\\back\\Workspace\\Workspace.Core\\Workspace.Core.csproj",
+      "projectName": "Workspace.Core",
+      "projectPath": "C:\\Users\\nojus\\Desktop\\Praktika\\PC project\\Projektas\\back\\Workspace\\Workspace.Core\\Workspace.Core.csproj",
+      "packagesPath": "C:\\Users\\nojus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nojus\\Desktop\\Praktika\\PC project\\Projektas\\back\\Workspace\\Workspace.Core\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\nojus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "C:\\Users\\nojus\\Desktop\\Praktika\\PC project\\Projektas\\back\\Workspace\\Workspace.Domain\\Workspace.Domain.csproj": {
+              "projectPath": "C:\\Users\\nojus\\Desktop\\Praktika\\PC project\\Projektas\\back\\Workspace\\Workspace.Domain\\Workspace.Domain.csproj"
+            },
+            "C:\\Users\\nojus\\Desktop\\Praktika\\PC project\\Projektas\\back\\Workspace\\Workspace.Infrastructure\\Workspace.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\nojus\\Desktop\\Praktika\\PC project\\Projektas\\back\\Workspace\\Workspace.Infrastructure\\Workspace.Infrastructure.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

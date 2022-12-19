@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "1nDd61kuoLEiD2m8enHI0DF4pgVahPcdRWSEMDihhro=",
+  "Source": "Workspace.Infrastructure",
+  "BasePath": "_content/Workspace.Infrastructure",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\nojus\\Desktop\\Praktika\\PC project\\Projektas\\back\\Workspace\\Workspace.Domain\\Workspace.Domain.csproj",
+      "Version": 2,
+      "Source": "Workspace.Domain",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

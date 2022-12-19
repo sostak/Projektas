@@ -1,0 +1,8 @@
+.badge {
+    margin: 2px;
+}
+.card{
+    width: 30rem;
+    margin: 10px;
+    max-width: fit-content;
+}

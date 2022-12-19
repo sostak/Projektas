@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Workspace.Core/1.0.0": {
+        "dependencies": {
+          "Workspace.Domain": "1.0.0",
+          "Workspace.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "Workspace.Core.dll": {}
+        }
+      },
+      "Workspace.Domain/1.0.0": {
+        "runtime": {
+          "Workspace.Domain.dll": {}
+        }
+      },
+      "Workspace.Infrastructure/1.0.0": {
+        "dependencies": {
+          "Workspace.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Workspace.Infrastructure.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Workspace.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Workspace.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Workspace.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

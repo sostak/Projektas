@@ -1,32 +1,31 @@
-/* eslint react/prop-types: 0 */
 import './Listing.css';
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { Table, Carousel } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import images from '../../mockData/images.json';
 import uuid from 'react-uuid';
 
 const Listing = () => {
-  const imageLinks = [
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png",
-    "https://images.unsplash.com/photo-1628744301791-d416de069399?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dWx0cmF3aWRlfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-  ];
-  
-  const location = useLocation();
-  const { car } = location.state; 
-  const images = [];
+  const params = useParams();
+  const connection = `https://localhost:7291/api/Listings/${params.listingId}`;
+  const [car, setCar] = useState(null);
   const categories = [];
   const values = [];
   const rows = [];
 
-  imageLinks.map(link => images.push(
-    <Carousel.Item>
-      <img
-        className="d-block" 
-        src={link} 
-        alt="image"/>
-    </Carousel.Item>)
-  );
+  const getListing = async() =>{
+    const data = await (await fetch(connection)).json();
+    setCar(data);
+  };
+
+  useEffect(() => {
+    console.log('usefect');
+    getListing();
+  }, []);
+  console.log(car);
 
   car.categories.map(category => categories.push(
     <td>
@@ -41,17 +40,27 @@ const Listing = () => {
   ));
   
   for(let i = 0; i<categories.length; i++){
-    rows.push(<tr>{categories[i]}{values[i]}</tr>);
+    rows.push(<tr key={uuid()}>{categories[i]}{values[i]}</tr>);
   }
   
   return (
     <div>
-      <h1 style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} >Cia bus gamintojas, modelis</h1>
-      <Carousel>
-        {images}
-      </Carousel>
+      <h1 style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} >{car.title}</h1>
+      <div style={{height:'500px'}}>
+        <Carousel fade controls='false'>
+          {
+            images.map(link => 
+              <Carousel.Item key={uuid()}>
+                <img
+                  className="d-block" 
+                  src={link} 
+                  alt="image"/>
+              </Carousel.Item>)
+          }
+        </Carousel>
+      </div>
       <br></br>
-      <Table striped bordered hover style={{ width: '600px', margin:'auto'}}>
+      <Table striped bordered hover>
         <thead></thead>
         <tbody>
           {rows}

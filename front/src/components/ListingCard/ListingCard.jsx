@@ -1,19 +1,15 @@
 import React from 'react';
-import { Badge, Button, Card } from 'react-bootstrap';
+import './ListingCard.css';
+import { Badge, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
 
 const ListingCard = ({car}) => {
   const navigate = useNavigate();
-  const badges = [];
-
-  car.values.map(badge => badges.push(
-    <Badge key={uuid()} bg="secondary" style={{ margin:"2px"}}>{badge}</Badge>)
-  );
-
+  
   return (
-    <Card style={{ width: '30rem', margin: '10px' }} onClick={() => navigate("listing", {state: {car}})}>
+    <Card onClick={() => navigate(`/listing/${1}`, {state: {car}})}>
       <Card.Img variant="top" src={car.image} />
       <Card.Body>
         <Card.Title>{car.title}</Card.Title>
@@ -22,7 +18,9 @@ const ListingCard = ({car}) => {
           bulk of the cards content.
         </Card.Text>
         <h4>
-          {badges}
+          {
+            car.values.map(value => <Badge key={uuid()} bg="secondary">{value}</Badge>)
+          }
         </h4>
       </Card.Body>
     </Card>

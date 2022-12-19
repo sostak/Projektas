@@ -2,4 +2,8 @@
     max-width: 640px;
     max-height: 480px;
     margin: auto;
-  }
+}
+.table{
+  width: 600px;
+  margin: auto;
+}
