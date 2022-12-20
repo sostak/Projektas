@@ -4,28 +4,36 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Table, Carousel } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import images from '../../mockData/images.json';
 import uuid from 'react-uuid';
+import Loader from '../../components/Loader';
 
 const Listing = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const connection = `https://localhost:7291/api/Listings/${params.listingId}`;
   const [car, setCar] = useState(null);
   const categories = [];
   const values = [];
   const rows = [];
 
-  const getListing = async() =>{
-    const data = await (await fetch(connection)).json();
-    setCar(data);
-  };
-
   useEffect(() => {
-    console.log('usefect');
-    getListing();
+    try{
+      const fetchData = async () => {
+        const data = await (await fetch(connection)).json();
+        setCar(data);
+      };
+      fetchData();
+    }
+    catch(error){
+      navigate('*');
+    }
   }, []);
-  console.log(car);
+
+  if(!car){
+    return <Loader></Loader>;
+  }
 
   car.categories.map(category => categories.push(
     <td>
@@ -45,7 +53,7 @@ const Listing = () => {
   
   return (
     <div>
-      <h1 style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} >{car.title}</h1>
+      <h1 style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} >{car.make} {car.model}</h1>
       <div style={{height:'500px'}}>
         <Carousel fade controls='false'>
           {
@@ -59,6 +67,7 @@ const Listing = () => {
           }
         </Carousel>
       </div>
+      <h2 style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>{car.price}€</h2>
       <br></br>
       <Table striped bordered hover>
         <thead></thead>
