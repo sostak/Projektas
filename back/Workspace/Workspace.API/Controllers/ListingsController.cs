@@ -16,7 +16,6 @@ namespace Workspace.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            List<Listing> l = _listingService.GetListings();
             return Ok(_listingService.GetListings());
         }
 
