@@ -2,22 +2,24 @@
 {
     public class Listing
     {
-        public string id { get; set; }
-        public string make { get; set; }
-        public string model { get; set; }
-        public string price { get; set; }
-        public string year { get; set; }
-        public string fuel { get; set; }
-        public string chassis { get; set; }
-        public bool plugIn { get; set; }
-        public string drivenWheels { get; set; }
-        public string power { get; set; }
-        public string engineCapacity { get; set; }
-        public string country { get; set; }
-        public string city { get; set; }
-        public string image { get; set; }
-        public string description { get; set; }
-        public List<string> categories { get; set; }
-        public List<string> values { get; set; }
+        public string Id { get; set; }
+        public string Make { get; set; }
+        public string Model { get; set; }
+        public int Price { get; set; }
+        public int? Year { get; set; }
+        public string? Fuel { get; set; }
+        public string? BodyType { get; set; }
+        public bool? PlugIn { get; set; }
+        public string? DrivenWheels { get; set; }
+        public int? Power { get; set; }
+        public int? EngineCapacity { get; set; }
+        public string? Country { get; set; }
+        public string? City { get; set; }
+        public string? Image { get; set; }
+        public List<string>? Images { get; set; }
+        public string? Description { get; set; }
+        public List<string>? Categories { get; set; }
+        public List<string>? Values { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

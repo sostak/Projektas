@@ -16,6 +16,7 @@ namespace Workspace.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            List<Listing> l = _listingService.GetListings();
             return Ok(_listingService.GetListings());
         }
 
@@ -23,6 +24,11 @@ namespace Workspace.API.Controllers
         public IActionResult Get(string id)
         {
             return Ok(_listingService.GetListing(id));
+        }
+        [HttpGet("filter")]
+        public IActionResult Get([FromQuery] Filters filters)
+        {
+            return Ok(_listingService.GetFilteredListings(filters));
         }
     }
 }

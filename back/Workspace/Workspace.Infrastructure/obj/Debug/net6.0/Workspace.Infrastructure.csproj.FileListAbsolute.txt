@@ -57,3 +57,5 @@ C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.In
 C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\refint\Workspace.Infrastructure.dll
 C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\Workspace.Infrastructure.pdb
 C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\ref\Workspace.Infrastructure.dll
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\bin\Debug\net6.0\Workspace.Infrastructure.runtimeconfig.json
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\Workspace.Infrastructure.genruntimeconfig.cache

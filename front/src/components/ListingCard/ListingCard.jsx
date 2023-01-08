@@ -13,10 +13,6 @@ const ListingCard = ({car}) => {
       <Card.Img variant="top" src={car.image} />
       <Card.Body>
         <Card.Title>{car.make} {car.model}</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the cards content.
-        </Card.Text>
         <h4>
           {car.year!=null && <Badge key={uuid()} bg="secondary">{car.year}</Badge>}
           {car.fuel!=null && <Badge key={uuid()} bg="secondary">{car.fuel}</Badge>}

@@ -38,3 +38,5 @@ C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Co
 C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Core\obj\Debug\net6.0\refint\Workspace.Core.dll
 C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Core\obj\Debug\net6.0\Workspace.Core.pdb
 C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Core\obj\Debug\net6.0\ref\Workspace.Core.dll
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Core\bin\Debug\net6.0\Workspace.Core.runtimeconfig.json
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Core\obj\Debug\net6.0\Workspace.Core.genruntimeconfig.cache

@@ -15,8 +15,6 @@ const SearchResults = () => {
         <Dropdown.Item eventKey="Audi">Audi</Dropdown.Item>
         <Dropdown.Item eventKey="BMW">BMW</Dropdown.Item>
         <Dropdown.Item eventKey="Volvo">Volvo</Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item eventKey="some link">some link</Dropdown.Item>
       </DropdownButton>
       <Button onClick={() => navigate('searchResults')}>Ieškoti</Button>
     </div>

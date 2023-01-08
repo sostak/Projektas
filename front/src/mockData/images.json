@@ -1,4 +1,11 @@
 [
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png",
-    "https://images.unsplash.com/photo-1628744301791-d416de069399?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dWx0cmF3aWRlfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+    {
+      "original": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png"
+    },
+    {
+      "original": "https://images.unsplash.com/photo-1628744301791-d416de069399?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dWx0cmF3aWRlfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+    },
+    {
+      "original": "https://wallpaperaccess.com/full/11729.jpg"
+    }
 ]
