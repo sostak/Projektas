@@ -1,52 +1,69 @@
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.csproj.AssemblyReference.cache
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.AssemblyInfoInputs.cache
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.AssemblyInfo.cs
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.csproj.CoreCompileInputs.cache
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\bin\Debug\net6.0\Workspace.Domain.deps.json
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\bin\Debug\net6.0\Workspace.Domain.dll
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\bin\Debug\net6.0\Workspace.Domain.pdb
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\staticwebassets\msbuild.Workspace.Domain.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\staticwebassets\msbuild.build.Workspace.Domain.props
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Workspace.Domain.props
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Workspace.Domain.props
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\staticwebassets.pack.json
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\scopedcss\bundle\Workspace.Domain.styles.css
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.dll
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\refint\Workspace.Domain.dll
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.pdb
-C:\Users\KarolisPC\Desktop\Paskaitos\Workspace\Workspace.Domain\obj\Debug\net6.0\ref\Workspace.Domain.dll
-C:\Users\nojus\Desktop\Praktika\PC workshopai\Workspace\Workspace\Workspace.Domain\bin\Debug\net6.0\Workspace.Domain.deps.json
-C:\Users\nojus\Desktop\Praktika\PC workshopai\Workspace\Workspace\Workspace.Domain\bin\Debug\net6.0\Workspace.Domain.dll
-C:\Users\nojus\Desktop\Praktika\PC workshopai\Workspace\Workspace\Workspace.Domain\bin\Debug\net6.0\Workspace.Domain.pdb
-C:\Users\nojus\Desktop\Praktika\PC workshopai\Workspace\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.csproj.AssemblyReference.cache
-C:\Users\nojus\Desktop\Praktika\PC workshopai\Workspace\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\nojus\Desktop\Praktika\PC workshopai\Workspace\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.AssemblyInfoInputs.cache
-C:\Users\nojus\Desktop\Praktika\PC workshopai\Workspace\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.AssemblyInfo.cs
-C:\Users\nojus\Desktop\Praktika\PC workshopai\Workspace\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.csproj.CoreCompileInputs.cache
-C:\Users\nojus\Desktop\Praktika\PC workshopai\Workspace\Workspace\Workspace.Domain\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\nojus\Desktop\Praktika\PC workshopai\Workspace\Workspace\Workspace.Domain\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\nojus\Desktop\Praktika\PC workshopai\Workspace\Workspace\Workspace.Domain\obj\Debug\net6.0\scopedcss\bundle\Workspace.Domain.styles.css
-C:\Users\nojus\Desktop\Praktika\PC workshopai\Workspace\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.dll
-C:\Users\nojus\Desktop\Praktika\PC workshopai\Workspace\Workspace\Workspace.Domain\obj\Debug\net6.0\refint\Workspace.Domain.dll
-C:\Users\nojus\Desktop\Praktika\PC workshopai\Workspace\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.pdb
-C:\Users\nojus\Desktop\Praktika\PC workshopai\Workspace\Workspace\Workspace.Domain\obj\Debug\net6.0\ref\Workspace.Domain.dll
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\bin\Debug\net6.0\Workspace.Domain.deps.json
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\bin\Debug\net6.0\Workspace.Domain.dll
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\bin\Debug\net6.0\Workspace.Domain.pdb
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.csproj.AssemblyReference.cache
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.AssemblyInfoInputs.cache
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.AssemblyInfo.cs
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.csproj.CoreCompileInputs.cache
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Debug\net6.0\scopedcss\bundle\Workspace.Domain.styles.css
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.dll
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Debug\net6.0\refint\Workspace.Domain.dll
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.pdb
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Debug\net6.0\ref\Workspace.Domain.dll
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\bin\Debug\net6.0\Workspace.Domain.runtimeconfig.json
-C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Debug\net6.0\Workspace.Domain.genruntimeconfig.cache
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.csproj.AssemblyReference.cache
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.AssemblyInfoInputs.cache
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.AssemblyInfo.cs
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.csproj.CoreCompileInputs.cache
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/bin/Debug/net6.0/Workspace.Domain.deps.json
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/bin/Debug/net6.0/Workspace.Domain.dll
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/bin/Debug/net6.0/Workspace.Domain.pdb
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/staticwebassets/msbuild.Workspace.Domain.Microsoft.AspNetCore.StaticWebAssets.props
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/staticwebassets/msbuild.build.Workspace.Domain.props
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.Workspace.Domain.props
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.Workspace.Domain.props
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/staticwebassets.pack.json
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/staticwebassets.build.json
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/staticwebassets.development.json
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/scopedcss/bundle/Workspace.Domain.styles.css
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.dll
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/refint/Workspace.Domain.dll
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.pdb
+C:/Users/KarolisPC/Desktop/Paskaitos/Workspace/Workspace.Domain/obj/Debug/net6.0/ref/Workspace.Domain.dll
+C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Domain/bin/Debug/net6.0/Workspace.Domain.deps.json
+C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Domain/bin/Debug/net6.0/Workspace.Domain.dll
+C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Domain/bin/Debug/net6.0/Workspace.Domain.pdb
+C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.csproj.AssemblyReference.cache
+C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.AssemblyInfoInputs.cache
+C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.AssemblyInfo.cs
+C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.csproj.CoreCompileInputs.cache
+C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Domain/obj/Debug/net6.0/staticwebassets.build.json
+C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Domain/obj/Debug/net6.0/staticwebassets.development.json
+C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Domain/obj/Debug/net6.0/scopedcss/bundle/Workspace.Domain.styles.css
+C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.dll
+C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Domain/obj/Debug/net6.0/refint/Workspace.Domain.dll
+C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.pdb
+C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Domain/obj/Debug/net6.0/ref/Workspace.Domain.dll
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/bin/Debug/net6.0/Workspace.Domain.deps.json
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/bin/Debug/net6.0/Workspace.Domain.dll
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/bin/Debug/net6.0/Workspace.Domain.pdb
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.csproj.AssemblyReference.cache
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.AssemblyInfoInputs.cache
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.AssemblyInfo.cs
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.csproj.CoreCompileInputs.cache
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/staticwebassets.build.json
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/staticwebassets.development.json
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/scopedcss/bundle/Workspace.Domain.styles.css
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.dll
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/refint/Workspace.Domain.dll
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.pdb
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/ref/Workspace.Domain.dll
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/bin/Debug/net6.0/Workspace.Domain.runtimeconfig.json
+C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.genruntimeconfig.cache
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/bin/Debug/net6.0/Workspace.Domain.deps.json
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/bin/Debug/net6.0/Workspace.Domain.runtimeconfig.json
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/bin/Debug/net6.0/Workspace.Domain.dll
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/bin/Debug/net6.0/Workspace.Domain.pdb
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.csproj.AssemblyReference.cache
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.AssemblyInfoInputs.cache
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.AssemblyInfo.cs
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.csproj.CoreCompileInputs.cache
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/staticwebassets.build.json
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/staticwebassets.development.json
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/scopedcss/bundle/Workspace.Domain.styles.css
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.dll
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/refint/Workspace.Domain.dll
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.pdb
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/Workspace.Domain.genruntimeconfig.cache
+/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/obj/Debug/net6.0/ref/Workspace.Domain.dll

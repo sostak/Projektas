@@ -31,27 +31,30 @@ const Listing = () => {
     catch(error){
       navigate('*');
     }
-  }, []);
+  });
 
   if(!car){
     return <Loader></Loader>;
   }
 
-  car.categories.map(category => categories.push(
-    <td>
-      {category}
-    </td>
-  ));
-
-  car.values.map(value => values.push(
-    <td>
-      {value}
-    </td>
-  ));
+  if(car.categories){
+    car.categories.map(category => categories.push(
+      <td>
+        {category}
+      </td>
+    ));
   
-  for(let i = 0; i<categories.length; i++){
-    rows.push(<tr key={uuid()}>{categories[i]}{values[i]}</tr>);
+    car.values.map(value => values.push(
+      <td>
+        {value}
+      </td>
+    ));
+    
+    for(let i = 0; i<categories.length; i++){
+      rows.push(<tr key={uuid()}>{categories[i]}{values[i]}</tr>);
+    }
   }
+  
   
   return (
     <div>
@@ -64,7 +67,6 @@ const Listing = () => {
       <Table striped bordered hover>
         <thead></thead>
         <tbody>
-          
           {rows}
         </tbody>
       </Table>

@@ -29,5 +29,21 @@ namespace Workspace.API.Controllers
         {
             return Ok(_listingService.GetFilteredListings(filters));
         }
+        [HttpPost]
+        public Listing Post(Listing listing){
+            Listing l = new Listing{
+                Id = "7",
+                Make = "Audi",
+                Model = "RS7",
+                Year = 2020,
+                Price = 200,
+                DrivenWheels = "4x4"  
+            };
+            _listingService.AddListing(l);
+            System.Console.WriteLine(listing.Make);
+            System.Console.WriteLine(listing.Model);
+            System.Console.WriteLine(listing.Price);
+            return l;
+        }
     }
 }

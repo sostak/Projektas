@@ -5,7 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavigationBar from './components/NavigationBar';
 import Listing from './pages/Listing/Listing.jsx';
 import SearchResults from './pages/SearchResults.jsx';
-import Search from './pages/Search.jsx';
+import Search from './pages/Search/Search.jsx';
+import Upload from './pages/Upload.jsx';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <NavigationBar/>
       <Routes>
         <Route index element={<Search />} />
-        <Route path="searchResults" element={<SearchResults />} />
+        <Route path="searchResults/:filters" element={<SearchResults />} />
+        <Route path="upload" element={<Upload />} />
         <Route path="listing/:listingId" element={<Listing />} />
         <Route path="*" element={<NoPage />} />
       </Routes>

@@ -20,6 +20,6 @@
         public string? Description { get; set; }
         public List<string>? Categories { get; set; }
         public List<string>? Values { get; set; }
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
     }
 }

@@ -35,8 +35,10 @@ namespace Workspace.Core.Services
                (string.IsNullOrWhiteSpace(filters.Country) || car.Country == filters.Country) &&
                (string.IsNullOrWhiteSpace(filters.City) || car.City == filters.City)).ToList();
             Listing car = DataContext.Listings[0];
-            Console.WriteLine((filters.PlugIn == false || (filters.PlugIn == true && car.PlugIn == true)));
             return listings;
+        }
+        public void AddListing(Listing listing){
+            DataContext.Listings.Add(listing);
         }
     }
 }
