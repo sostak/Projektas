@@ -15,7 +15,7 @@ const SearchResults = () => {
   const [make, setMake] = useState('');
   const [model, setModel] = useState('');
   const [minPrice, setMinPrice] = useState('');
-  const [maxPrice, setMaxPrice] = useState();
+  /*const [maxPrice, setMaxPrice] = useState();
   const [minYear, setMinYear] = useState();
   const [maxYear, setMaxYear] = useState();
   const [Fuel, setFuel] = useState();
@@ -27,7 +27,7 @@ const SearchResults = () => {
   const [minEngineCapacity, setMinEngineCapacity] = useState();
   const [maxEngineCapacity, setMaxEngineCapacity] = useState();
   const [country, setCountry] = useState();
-  const [city, setCity] = useState();
+  const [city, setCity] = useState();*/
 
   useEffect(() => {
     try{
@@ -45,7 +45,7 @@ const SearchResults = () => {
   const fetchModels = async (connectionModels) => {
     const data = await (await fetch(connectionModels)).json();
     setModels(data);
-  }
+  };
 
   if(!makes){
     return <Loader></Loader>;
@@ -58,15 +58,15 @@ const SearchResults = () => {
   };
   const handleModel = (event) => {
     setModel(event);
-  }
+  };
   const handleMinPrice = (event) => {
     setMinPrice(event);
-  }
+  };
 
   const handleSearch = () => {
     //navigate('searchResults', {state: {filters: `filter?Make=${make}&Model=${model}&MinPrice=${minPrice}`}});
     navigate(`searchResults/filter?Make=${make}&Model=${model}&MinPrice=${minPrice}`);
-  }
+  };
 
 
   return (
@@ -75,14 +75,14 @@ const SearchResults = () => {
       <p>Gamintojas</p>
       <DropdownButton title={make} onSelect={handleMake}>
         {
-          makes.map(make => <Dropdown.Item eventKey={make}>{make}</Dropdown.Item> )
+          makes.map(make => <Dropdown.Item key={make} eventKey={make}>{make}</Dropdown.Item> )
         }
       </DropdownButton>
 
       <p>Modelis</p>
       <DropdownButton title={model} onSelect={handleModel} disabled={modelsDisabled}>
         {
-          models.map(model => <Dropdown.Item eventKey={model}>{model}</Dropdown.Item> )
+          models.map(model => <Dropdown.Item key={make} eventKey={model}>{model}</Dropdown.Item> )
         }
       </DropdownButton>
 

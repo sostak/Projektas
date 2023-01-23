@@ -1,0 +1,6 @@
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.API\obj\Release\net6.0\Workspace.API.csproj.AssemblyReference.cache
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.API\obj\Release\net6.0\Workspace.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.API\obj\Release\net6.0\Workspace.API.AssemblyInfoInputs.cache
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.API\obj\Release\net6.0\Workspace.API.AssemblyInfo.cs
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.API\obj\Release\net6.0\Workspace.API.csproj.CoreCompileInputs.cache
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.API\obj\Release\net6.0\Workspace.API.MvcApplicationPartsAssemblyInfo.cache

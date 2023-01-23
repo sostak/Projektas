@@ -1,0 +1,17 @@
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\bin\Release\net6.0\Workspace.Domain.deps.json
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\bin\Release\net6.0\Workspace.Domain.runtimeconfig.json
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\bin\Release\net6.0\Workspace.Domain.dll
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\bin\Release\net6.0\Workspace.Domain.pdb
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Release\net6.0\Workspace.Domain.csproj.AssemblyReference.cache
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Release\net6.0\Workspace.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Release\net6.0\Workspace.Domain.AssemblyInfoInputs.cache
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Release\net6.0\Workspace.Domain.AssemblyInfo.cs
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Release\net6.0\Workspace.Domain.csproj.CoreCompileInputs.cache
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Release\net6.0\staticwebassets.build.json
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Release\net6.0\staticwebassets.development.json
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Release\net6.0\scopedcss\bundle\Workspace.Domain.styles.css
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Release\net6.0\Workspace.Domain.dll
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Release\net6.0\refint\Workspace.Domain.dll
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Release\net6.0\Workspace.Domain.pdb
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Release\net6.0\Workspace.Domain.genruntimeconfig.cache
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Domain\obj\Release\net6.0\ref\Workspace.Domain.dll

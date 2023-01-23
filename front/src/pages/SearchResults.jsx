@@ -16,10 +16,7 @@ const SearchResults = () => {
   useEffect(() => {
     try{
       const fetchData = async () => {
-        console.log(location.search);
-        console.log(filters.get("Make"));
-        console.log(`https://localhost:7291/api/Listings/filter?Make=${filters.get("Make")}&Model=${filters.get("Model")}&MinPrice=${filters.get("MinPrice")}`);
-        const data = await (await fetch(`https://localhost:7291/api/Listings/filter?Make=${filters.get("Make") == null ? '' : filters.get("Make")}&Model=${filters.get("Model") == null ? '' : filters.get("Model")}&MinPrice=${filters.get("MinPrice") == null ? '' : filters.get("MinPrice")}`)).json();
+        const data = await (await fetch(`https://localhost:7291/api/Listings/filter?Make=${filters.get('Make') == null ? '' : filters.get('Make')}&Model=${filters.get('Model') == null ? '' : filters.get('Model')}&MinPrice=${filters.get('MinPrice') == null ? '' : filters.get('MinPrice')}`)).json();
         setListings(data);
       };
       fetchData();

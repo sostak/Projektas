@@ -1,5 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 using Workspace.Core.Interfaces;
-using Workspace.Core.Services;
+using Workspace.Infrastructure.Data;
+using Workspace.Infrastructure.Repositories;
+using Workspace.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,8 +10,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<WorkspaceDbContext>(
+    options =>
+    {
+        options.UseSqlite("Data Source=LocalDatabase.db", x => x.MigrationsAssembly("Workspace.Infrastructure"));
+    });
 builder.Services.AddScoped<IListingService, ListingService>();
 builder.Services.AddScoped<ICategoriesService, CategoriesService>();
+builder.Services.AddScoped<IListingRepository, ListingRepository>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 

@@ -11,17 +11,17 @@ const ListingCard = ({car}) => {
     <Card onClick={() => navigate(`/listing/${car.id}`)}>
       <Card.Img variant="top" src={car.image} />
       <Card.Body>
-        <Card.Title>{car.make} {car.model}</Card.Title>
+        <Card.Title>{car.Make} {Mar.model}</Card.Title>
         <h4>
-          {car.year!=null && <Badge>{car.year}</Badge>}
-          {car.fuel!=null && <Badge>{car.fuel}</Badge>}
-          {car.chassis!=null && <Badge>{car.chassis}</Badge>}
-          {car.plugIn && <Badge>Plug-In</Badge>}
-          {car.drivenWheels!=null && <Badge>{car.drivenWheels}</Badge>}
-          {car.power!=null && <Badge>{car.power}</Badge>}
-          {car.engineCapacity!=null && <Badge>{car.engineCapacity}</Badge>}
-          {car.country!=null && <Badge>{car.country}</Badge>}
-          {car.city!=null && <Badge>{car.city}</Badge>}
+          {car.Year && <Badge>{car.year}</Badge>}
+          {car.Fuel && <Badge>{car.fuel}</Badge>}
+          {car.Chassis && <Badge>{car.chassis}</Badge>}
+          {car.PlugIn && <Badge>Plug-In</Badge>}
+          {car.DrivenWheels && <Badge>{car.drivenWheels}</Badge>}
+          {car.Power && <Badge>{car.power}</Badge>}
+          {car.EngineCapacity && <Badge>{car.engineCapacity}</Badge>}
+          {car.Country && <Badge>{car.country}</Badge>}
+          {car.City && <Badge>{car.city}</Badge>}
         </h4>
       </Card.Body>
     </Card>

@@ -3,7 +3,6 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { HouseFill } from 'react-bootstrap-icons';
-import { useNavigate } from 'react-router-dom';
 
 const NavigationBar = () => {
   return (

@@ -39,26 +39,6 @@ C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Infr
 C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/refint/Workspace.Infrastructure.dll
 C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/Workspace.Infrastructure.pdb
 C:/Users/nojus/Desktop/Praktika/PC workshopai/Workspace/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/ref/Workspace.Infrastructure.dll
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/bin/Debug/net6.0/Workspace.Infrastructure.deps.json
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/bin/Debug/net6.0/Workspace.Infrastructure.dll
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/bin/Debug/net6.0/Workspace.Infrastructure.pdb
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/bin/Debug/net6.0/Workspace.Domain.dll
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/bin/Debug/net6.0/Workspace.Domain.pdb
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/Workspace.Infrastructure.csproj.AssemblyReference.cache
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/Workspace.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/Workspace.Infrastructure.AssemblyInfoInputs.cache
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/Workspace.Infrastructure.AssemblyInfo.cs
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/Workspace.Infrastructure.csproj.CoreCompileInputs.cache
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/staticwebassets.build.json
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/staticwebassets.development.json
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/scopedcss/bundle/Workspace.Infrastructure.styles.css
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/Workspace.Infrastructure.csproj.CopyComplete
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/Workspace.Infrastructure.dll
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/refint/Workspace.Infrastructure.dll
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/Workspace.Infrastructure.pdb
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/ref/Workspace.Infrastructure.dll
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/bin/Debug/net6.0/Workspace.Infrastructure.runtimeconfig.json
-C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/Workspace.Infrastructure.genruntimeconfig.cache
 /home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Infrastructure/bin/Debug/net6.0/Workspace.Infrastructure.deps.json
 /home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Infrastructure/bin/Debug/net6.0/Workspace.Infrastructure.runtimeconfig.json
 /home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Infrastructure/bin/Debug/net6.0/Workspace.Infrastructure.dll
@@ -79,3 +59,25 @@ C:/Users/nojus/Desktop/Praktika/PC project/Projektas/back/Workspace/Workspace.In
 /home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/Workspace.Infrastructure.pdb
 /home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/Workspace.Infrastructure.genruntimeconfig.cache
 /home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Infrastructure/obj/Debug/net6.0/ref/Workspace.Infrastructure.dll
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\Workspace.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\Workspace.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\Workspace.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\Workspace.Infrastructure.AssemblyInfo.cs
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\Workspace.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\Workspace.Infrastructure.dll
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\refint\Workspace.Infrastructure.dll
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\Workspace.Infrastructure.pdb
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\bin\Debug\net6.0\Workspace.Infrastructure.deps.json
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\bin\Debug\net6.0\Workspace.Infrastructure.runtimeconfig.json
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\bin\Debug\net6.0\Workspace.Infrastructure.dll
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\bin\Debug\net6.0\Workspace.Infrastructure.pdb
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\bin\Debug\net6.0\Workspace.Domain.dll
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\bin\Debug\net6.0\Workspace.Domain.pdb
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\scopedcss\bundle\Workspace.Infrastructure.styles.css
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\Workspace.Infrastructure.csproj.CopyComplete
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\Workspace.Infrastructure.genruntimeconfig.cache
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\obj\Debug\net6.0\ref\Workspace.Infrastructure.dll
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\bin\Debug\net6.0\Workspace.Core.dll
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.Infrastructure\bin\Debug\net6.0\Workspace.Core.pdb

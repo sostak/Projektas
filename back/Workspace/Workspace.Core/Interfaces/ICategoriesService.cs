@@ -1,6 +1,4 @@
-﻿using Workspace.Domain.Models;
-
-namespace Workspace.Core.Interfaces
+﻿namespace Workspace.Core.Interfaces
 {
     public interface ICategoriesService
     {

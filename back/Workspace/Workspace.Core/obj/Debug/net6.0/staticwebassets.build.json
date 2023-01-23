@@ -1,31 +1,20 @@
 {
   "Version": 1,
-  "Hash": "OsndXTASsl32gdbz+8cXYK9SjDd8fjxanh2UzV+BI/4=",
+  "Hash": "icSXVfsh2NXvYJqE1UhFHkw1/XxWHgCkTgfiJ6mUWHc=",
   "Source": "Workspace.Core",
   "BasePath": "_content/Workspace.Core",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Domain/Workspace.Domain.csproj",
+      "Identity": "C:\\Users\\nojus\\Desktop\\Praktika\\PC project\\Projektas\\back\\Workspace\\Workspace.Domain\\Workspace.Domain.csproj",
       "Version": 2,
       "Source": "Workspace.Domain",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "",
-      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier"
-    },
-    {
-      "Identity": "/home/nojus/Documents/academy/Projektas/back/Workspace/Workspace.Infrastructure/Workspace.Infrastructure.csproj",
-      "Version": 2,
-      "Source": "Workspace.Infrastructure",
-      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "",
-      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier",
-      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier"
     }
   ],
