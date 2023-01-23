@@ -51,12 +51,7 @@ namespace Workspace.Infrastructure.Services
         public Listing AddListing(ListingRequestDto listingDto){
             Listing listing = _mapper.Map<Listing>(listingDto);
             listing.Id = Guid.NewGuid();
-            //DataContext.Listings.Add(listing);
-
-            foreach(Listing list in DataContext.Listings)
-            {
-                _repository.AddListing(list);
-            }
+            _repository.AddListing(listing);
 
             return listing;
         }
