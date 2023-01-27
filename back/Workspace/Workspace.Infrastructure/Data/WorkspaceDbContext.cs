@@ -6,8 +6,9 @@ namespace Workspace.Infrastructure.Data
 {
     public class WorkspaceDbContext : DbContext
     {
-        public DbSet<Listing> Listings { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         public WorkspaceDbContext(DbContextOptions<WorkspaceDbContext> options)
         : base(options)
@@ -17,7 +18,7 @@ namespace Workspace.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ListingConfiguration).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(VehicleConfiguration).Assembly);
         }
     }
 }

@@ -15,7 +15,11 @@ namespace Workspace.Infrastructure.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.2");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true);
 
             modelBuilder.Entity("Workspace.Domain.Models.Image", b =>
                 {
@@ -37,10 +41,45 @@ namespace Workspace.Infrastructure.Migrations
 
                     b.HasIndex("ListingId");
 
-                    b.ToTable("Image");
+                    b.ToTable("Images");
                 });
 
-            modelBuilder.Entity("Workspace.Domain.Models.Listing", b =>
+            modelBuilder.Entity("Workspace.Domain.Models.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("BLOB");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("BLOB");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Workspace.Domain.Models.Vehicle", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -84,9 +123,6 @@ namespace Workspace.Infrastructure.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Thumbnail")
-                        .HasColumnType("TEXT");
-
                     b.Property<Guid>("UserId")
                         .HasColumnType("TEXT");
 
@@ -97,47 +133,12 @@ namespace Workspace.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Listings");
-                });
-
-            modelBuilder.Entity("Workspace.Domain.Models.User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<byte[]>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("BLOB");
-
-                    b.Property<byte[]>("PasswordSalt")
-                        .IsRequired()
-                        .HasColumnType("BLOB");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
+                    b.ToTable("Vehicles");
                 });
 
             modelBuilder.Entity("Workspace.Domain.Models.Image", b =>
                 {
-                    b.HasOne("Workspace.Domain.Models.Listing", "Listing")
+                    b.HasOne("Workspace.Domain.Models.Vehicle", "Listing")
                         .WithMany("Images")
                         .HasForeignKey("ListingId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -146,7 +147,7 @@ namespace Workspace.Infrastructure.Migrations
                     b.Navigation("Listing");
                 });
 
-            modelBuilder.Entity("Workspace.Domain.Models.Listing", b =>
+            modelBuilder.Entity("Workspace.Domain.Models.Vehicle", b =>
                 {
                     b.HasOne("Workspace.Domain.Models.User", "User")
                         .WithMany("Listings")
@@ -157,14 +158,14 @@ namespace Workspace.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Workspace.Domain.Models.Listing", b =>
-                {
-                    b.Navigation("Images");
-                });
-
             modelBuilder.Entity("Workspace.Domain.Models.User", b =>
                 {
                     b.Navigation("Listings");
+                });
+
+            modelBuilder.Entity("Workspace.Domain.Models.Vehicle", b =>
+                {
+                    b.Navigation("Images");
                 });
 #pragma warning restore 612, 618
         }

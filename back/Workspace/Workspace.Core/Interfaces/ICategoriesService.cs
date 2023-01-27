@@ -2,9 +2,9 @@
 {
     public interface ICategoriesService
     {
-        public List<string> GetMake();
-        public List<string> GetModel(string make);
-        public List<string> GetCountries();
-        public List<string> GetCities(string country);
+        Task<IEnumerable<string>> GetMake();
+        Task<IEnumerable<string>> GetModel(string make);
+        Task<IEnumerable<string>> GetCountries();
+        Task<IEnumerable<string>> GetCities(string country);
     }
 }

@@ -28,5 +28,17 @@ namespace Workspace.Infrastructure.Repositories
 
             return user;
         }
+
+        public async Task<IEnumerable<User>> GetAllUsers()
+        {
+            var users = await _dbContext.Users.ToListAsync();
+
+            return users;
+        }
+        public async Task AddUser(User user)
+        {
+            await _dbContext.Users.AddAsync(user);
+            _dbContext.SaveChanges();
+        }
     }
 }

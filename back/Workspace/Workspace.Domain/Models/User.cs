@@ -9,6 +9,6 @@
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public string PhoneNumber { get; set; }
-        public virtual List<Listing>? Listings { get; set; }
+        public virtual List<Vehicle>? Listings { get; set; }
     }
 }

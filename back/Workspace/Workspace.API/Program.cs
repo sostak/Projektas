@@ -48,7 +48,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<WorkspaceDbContext>(
     options =>
     {
-        options.UseSqlite("Data Source=LocalDatabase.db", x => x.MigrationsAssembly("Workspace.Infrastructure"));
+        options.UseLazyLoadingProxies().UseSqlite("Data Source=LocalDatabase.db", x => x.MigrationsAssembly("Workspace.Infrastructure"));
     });
 
 var setting = new JwtSettings();
@@ -56,10 +56,11 @@ builder.Configuration.GetSection(JwtSettings.SectionName).Bind(setting);
 builder.Services.AddSingleton(setting);
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddTransient<IAuthService, AuthService>();
-builder.Services.AddScoped<IListingRepository, ListingRepository>();
+builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IListingService, ListingService>();
+builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<ICategoriesService, CategoriesService>();
+builder.Services.AddScoped<IImageService, ImageService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

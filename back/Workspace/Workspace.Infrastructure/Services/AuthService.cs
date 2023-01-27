@@ -1,6 +1,9 @@
-﻿using System.Security.Cryptography;
+﻿using AutoMapper;
+using System.Security.Cryptography;
 using System.Text;
 using Workspace.Core.Commands;
+using Workspace.Core.Dto.Requests;
+using Workspace.Core.Dto.Responses;
 using Workspace.Core.Interfaces;
 using Workspace.Domain.Models;
 
@@ -11,10 +14,12 @@ namespace Workspace.Infrastructure.Services
         private record HashPasswordResponse(byte[] PasswordHash, byte[] PasswordSalt);
         private static readonly Encoding HashEncoding = Encoding.UTF8;
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
-        public AuthService(IUserRepository userRepository)
+        public AuthService(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
         private HashPasswordResponse HashPassword(string password)
@@ -52,6 +57,25 @@ namespace Workspace.Infrastructure.Services
         public async Task<User> GetMe(Guid Id)
         {
             return await _userRepository.GetByIdAsync(Id);
+        }
+
+        public async Task<IEnumerable<User>> GetAllUsers()
+        {
+            return await _userRepository.GetAllUsers();
+        }
+
+        public async Task<UserResponseDto> Register(CreateUserRequestDto request)
+        {
+            var user = _mapper.Map<User>(request);
+            user.Id = Guid.NewGuid();
+            var password = HashPassword(request.Password);
+            user.PasswordSalt = password.PasswordSalt;
+            user.PasswordHash = password.PasswordHash;
+            user.Listings = new List<Vehicle>();
+            await _userRepository.AddUser(user);
+
+            var userDto = _mapper.Map<UserResponseDto>(user);
+            return userDto;
         }
     }
 }

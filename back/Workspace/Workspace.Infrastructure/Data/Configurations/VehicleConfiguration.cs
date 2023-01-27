@@ -4,9 +4,9 @@ using Workspace.Domain.Models;
 
 namespace Workspace.Infrastructure.Data.Configurations
 {
-    public class ListingConfiguration : IEntityTypeConfiguration<Listing>
+    public class VehicleConfiguration : IEntityTypeConfiguration<Vehicle>
     {
-        public void Configure(EntityTypeBuilder<Listing> builder)
+        public void Configure(EntityTypeBuilder<Vehicle> builder)
         {
             builder.HasOne(d => d.User)
                 .WithMany(p => p.Listings)

@@ -1,8 +1,9 @@
-﻿namespace Workspace.Domain.Models
+﻿using Workspace.Domain.Models;
+
+namespace Workspace.Core.Dto.Requests
 {
-    public class Listing
+    public class CreateVehicleRequestDto
     {
-        public Guid Id { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
         public int Price { get; set; }
@@ -17,8 +18,6 @@
         public string? City { get; set; }
         public string? Thumbnail { get; set; }
         public string? Description { get; set; }
-        public List<Image> Images { get; set; }
-        public Guid UserId { get; set; }
-        public virtual User User { get; set; }
+        public List<string>? Images { get; set; }
     }
 }

@@ -6,5 +6,7 @@ namespace Workspace.Core.Interfaces
     {
         Task<User> GetByIdAsync(Guid id);
         Task<User?> GetByEmailOrDefaultAsync(string email);
+        Task<IEnumerable<User>> GetAllUsers();
+        Task AddUser(User user);
     }
 }

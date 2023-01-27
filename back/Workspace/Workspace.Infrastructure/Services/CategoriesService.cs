@@ -4,31 +4,39 @@ namespace Workspace.Infrastructure.Services
 {
     public class CategoriesService : ICategoriesService
     {
-        private readonly IListingRepository _listingRepository;
+        private readonly IVehicleRepository _vehicleRepository;
 
-        public CategoriesService(IListingRepository listingRepository)
+        public CategoriesService(IVehicleRepository vehicleRepository)
         {
-            _listingRepository = listingRepository;
+            _vehicleRepository = vehicleRepository;
         }
 
-        public List<string> GetMake()
+        async Task<IEnumerable<string>> ICategoriesService.GetMake()
         {
-            return DataContext.Listings.Select(car => car.Make).Distinct().ToList();
+            var vehicles = await _vehicleRepository.GetVehicles();
+            var makes = vehicles.Select(car => car.Make).Distinct().ToList();
+            return makes;
         }
 
-        public List<string> GetModel(string make)
+        async Task<IEnumerable<string>> ICategoriesService.GetModel(string make)
         {
-            return DataContext.Listings.Where(car => car.Make == make).Select(car => car.Model).Distinct().ToList();
+            var vehicles = await _vehicleRepository.GetVehicles();
+            var models = vehicles.Where(car => car.Make == make).Select(car => car.Model).Distinct().ToList();
+            return models;
         }
 
-        public List<string> GetCountries()
+        async Task<IEnumerable<string>> ICategoriesService.GetCountries()
         {
-            return DataContext.Listings.Select(car => car.Country).Distinct().ToList();
+            var vehicles = await _vehicleRepository.GetVehicles();
+            var countries = vehicles.Select(car => car.Country).Distinct().ToList();
+            return countries;
         }
 
-        public List<string> GetCities(string country)
+        async Task<IEnumerable<string>> ICategoriesService.GetCities(string country)
         {
-            return DataContext.Listings.Where(car => car.Country == country).Select(car => car.City).Distinct().ToList();
+            var vehicles = await _vehicleRepository.GetVehicles();
+            var cities = vehicles.Where(car => car.Country == country).Select(car => car.City).Distinct().ToList();
+            return cities;
         }
     }
 }

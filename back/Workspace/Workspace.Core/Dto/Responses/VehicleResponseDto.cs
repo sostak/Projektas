@@ -1,6 +1,6 @@
-﻿namespace Workspace.Core.Responses
+﻿namespace Workspace.Core.Dto.Responses
 {
-    public class ListingResponseDto
+    public class VehicleResponseDto
     {
             public Guid Id { get; set; }
             public string Make { get; set; }
