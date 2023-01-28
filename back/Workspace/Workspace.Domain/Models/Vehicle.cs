@@ -8,6 +8,8 @@ namespace Workspace.Domain.Models
         public string Make { get; set; }
         public string Model { get; set; }
         public int Price { get; set; }
+        public bool IsReserved { get; set; }
+        public bool IsActive { get; set; }
         public int? Year { get; set; }
         public string? Fuel { get; set; }
         public string? BodyType { get; set; }

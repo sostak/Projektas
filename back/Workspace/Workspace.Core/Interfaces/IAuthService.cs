@@ -8,8 +8,8 @@ namespace Workspace.Core.Interfaces
     public interface IAuthService
     {
         Task<User> LoginAsync(LoginCommand login);
-        Task<User> GetMe(Guid Id);
-        Task<IEnumerable<User>> GetAllUsers();
+        Task<UserResponseDto> GetMe(Guid Id);
+        Task<IEnumerable<UserResponseDto>> GetAllUsers();
         Task<UserResponseDto> Register(CreateUserRequestDto request);
     }
 }

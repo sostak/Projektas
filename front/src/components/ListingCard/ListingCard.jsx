@@ -6,22 +6,22 @@ import PropTypes from 'prop-types';
 
 const ListingCard = ({car}) => {
   const navigate = useNavigate();
-  
+  console.log(car.images[0]);
   return (
     <Card onClick={() => navigate(`/listing/${car.id}`)}>
-      <Card.Img variant="top" src={car.image} />
+      <Card.Img variant="top" src={car.images[0]} />
       <Card.Body>
-        <Card.Title>{car.Make} {Mar.model}</Card.Title>
+        <Card.Title>{car.make} {car.model}</Card.Title>
         <h4>
-          {car.Year && <Badge>{car.year}</Badge>}
-          {car.Fuel && <Badge>{car.fuel}</Badge>}
-          {car.Chassis && <Badge>{car.chassis}</Badge>}
-          {car.PlugIn && <Badge>Plug-In</Badge>}
-          {car.DrivenWheels && <Badge>{car.drivenWheels}</Badge>}
-          {car.Power && <Badge>{car.power}</Badge>}
-          {car.EngineCapacity && <Badge>{car.engineCapacity}</Badge>}
-          {car.Country && <Badge>{car.country}</Badge>}
-          {car.City && <Badge>{car.city}</Badge>}
+          {car.year && <Badge>{car.year}</Badge>}
+          {car.fuel && <Badge>{car.fuel}</Badge>}
+          {car.bodyType && <Badge>{car.bodyType}</Badge>}
+          {car.plugIn && <Badge>Plug-In</Badge>}
+          {car.drivenWheels && <Badge>{car.drivenWheels}</Badge>}
+          {car.power && <Badge>{car.power}</Badge>}
+          {car.engineCapacity && <Badge>{car.engineCapacity}</Badge>}
+          {car.country && <Badge>{car.country}</Badge>}
+          {car.city && <Badge>{car.city}</Badge>}
         </h4>
       </Card.Body>
     </Card>

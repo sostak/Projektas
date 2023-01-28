@@ -39,8 +39,8 @@ namespace Workspace.API.Controllers
         [HttpPost]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<VehicleResponseDto> Post(CreateVehicleRequestDto vehicleDto) {
-            var user = await _authService.GetMe(UserId);
-            var vehicle = await _vehicleService.AddVehicle(vehicleDto, user);
+            var userDto = await _authService.GetMe(UserId);
+            var vehicle = await _vehicleService.AddVehicle(vehicleDto, userDto);
             return vehicle;
         }
         [HttpDelete("DeleteAllVehicles")]

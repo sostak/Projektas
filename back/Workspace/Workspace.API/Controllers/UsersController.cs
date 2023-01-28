@@ -49,7 +49,7 @@ namespace Workspace.API.Controllers
         [HttpPost("Register")]
         public async Task<ActionResult<UserResponseDto>> Register([FromBody] CreateUserRequestDto request)
         {
-            var response = _authService.Register(request);
+            var response = await _authService.Register(request);
 
             return Ok(response);
         }

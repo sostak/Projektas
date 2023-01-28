@@ -9,7 +9,7 @@ namespace Workspace.Core.Interfaces
         Task<IEnumerable<VehicleResponseDto>> GetVehicles();
         Task<VehicleResponseDto> GetVehicle(Guid id);
         Task<IEnumerable<VehicleResponseDto>> GetFilteredVehicles(Filters filters);
-        Task<VehicleResponseDto> AddVehicle(CreateVehicleRequestDto vehicleDto, User user);
+        Task<VehicleResponseDto> AddVehicle(CreateVehicleRequestDto vehicleDto, UserResponseDto user);
         void Delete();
     }
 }

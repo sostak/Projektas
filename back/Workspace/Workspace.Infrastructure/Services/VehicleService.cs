@@ -48,9 +48,13 @@ namespace Workspace.Infrastructure.Services
         {
             var vehicles = await _vehicleRepository.GetVehicles();
             var vehicle = vehicles.Where(v => v.Id == id).FirstOrDefault();
-            var vehicleDto = _mapper.Map<VehicleResponseDto>(vehicle);
-            vehicleDto.PhoneNumber = vehicle.User.PhoneNumber;
-            return vehicleDto;
+            if(vehicle != null)
+            {
+                var vehicleDto = _mapper.Map<VehicleResponseDto>(vehicle);
+                vehicleDto.PhoneNumber = vehicle.User.PhoneNumber;
+                return vehicleDto;
+            }
+            return null;
         }
 
         public async Task<IEnumerable<VehicleResponseDto>> GetFilteredVehicles(Filters filters)
@@ -84,24 +88,34 @@ namespace Workspace.Infrastructure.Services
             return vehiclesDto;
         }
 
-        public async Task<VehicleResponseDto> AddVehicle(CreateVehicleRequestDto vehicleDto, User user)
+        public async Task<VehicleResponseDto> AddVehicle(CreateVehicleRequestDto vehicleDto, UserResponseDto user)
         {
             var vehicle = _mapper.Map<Vehicle>(vehicleDto);
             vehicle.Id = Guid.NewGuid();
             vehicle.UserId = user.Id;
+            vehicle.IsReserved = false;
+            vehicle.IsActive = true;
 
             var images = new List<Image>();
-            var thumbnail = await _imageService.UploadImage(vehicleDto.Thumbnail, vehicle, true);
-            images.Add(thumbnail);
-            foreach(string image in vehicleDto.Images)
+            if(vehicleDto.ThumbnailBase64 != null)
             {
-                var img = await _imageService.UploadImage(image, vehicle, false);
-                images.Add(img);
+                var thumbnail = await _imageService.UploadImage(vehicleDto.ThumbnailBase64, vehicle, true);
+                images.Add(thumbnail);
+            }
+            
+            if(vehicleDto.ImagesBase64 != null)
+            {
+                foreach (string image in vehicleDto.ImagesBase64)
+                {
+                    var img = await _imageService.UploadImage(image, vehicle, false);
+                    images.Add(img);
+                }
             }
 
             await _vehicleRepository.AddVehicle(vehicle, images);
             var responseDto = _mapper.Map<VehicleResponseDto>(vehicle);
             responseDto.PhoneNumber = vehicle.User.PhoneNumber;
+            responseDto.Images = _mapper.Map<List<ImageResponseDto>>(images);
             return responseDto;
         }
         public void Delete()

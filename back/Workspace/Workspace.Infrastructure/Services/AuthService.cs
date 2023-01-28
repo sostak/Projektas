@@ -54,14 +54,18 @@ namespace Workspace.Infrastructure.Services
             return user;
         }
 
-        public async Task<User> GetMe(Guid Id)
+        public async Task<UserResponseDto> GetMe(Guid Id)
         {
-            return await _userRepository.GetByIdAsync(Id);
+            var user = await _userRepository.GetByIdAsync(Id);
+            var userResponse = _mapper.Map<UserResponseDto>(user);
+            return userResponse;
         }
 
-        public async Task<IEnumerable<User>> GetAllUsers()
+        public async Task<IEnumerable<UserResponseDto>> GetAllUsers()
         {
-            return await _userRepository.GetAllUsers();
+            var users = await _userRepository.GetAllUsers();
+            var usersResponse = _mapper.Map<List<UserResponseDto>>(users);
+            return usersResponse;
         }
 
         public async Task<UserResponseDto> Register(CreateUserRequestDto request)
