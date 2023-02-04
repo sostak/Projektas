@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using Workspace.Core.Interfaces;
 using Workspace.Domain.Models;
 using Workspace.Infrastructure.Data;
@@ -39,6 +40,28 @@ namespace Workspace.Infrastructure.Repositories
         {
             await _dbContext.Users.AddAsync(user);
             _dbContext.SaveChanges();
+        }
+
+        public User UpdateUser(User user)
+        {
+            var originalUser = _dbContext.Users.Find(user.Id);
+
+            _dbContext.Entry(originalUser).State = EntityState.Detached;
+
+            PropertyInfo[] properties = typeof(User).GetProperties();
+            foreach (var property in properties)
+            {
+                var value = property.GetValue(user);
+                if (value != null)
+                {
+                    typeof(User).GetProperty(property.Name)?.SetValue(originalUser, value);
+                }
+            }
+
+            _dbContext.Entry(originalUser).State = EntityState.Modified;
+            _dbContext.SaveChanges();
+
+            return originalUser;
         }
     }
 }

@@ -11,5 +11,7 @@ namespace Workspace.Core.Interfaces
         Task<UserResponseDto> GetMe(Guid Id);
         Task<IEnumerable<UserResponseDto>> GetAllUsers();
         Task<UserResponseDto> Register(CreateUserRequestDto request);
+        UserResponseDto Update(UpdateUserRequestDto request, Guid id);
+        Task<bool> CheckPassword(string password, Guid userId);
     }
 }

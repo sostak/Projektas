@@ -1,7 +1,10 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using Workspace.Core.Dto.Requests;
+using Workspace.Core.Dto.Responses;
 using Workspace.Core.Interfaces;
 using Workspace.Domain.Models;
 using Workspace.Infrastructure.Data;
@@ -38,6 +41,28 @@ namespace Workspace.Infrastructure.Repositories
                 _dbContext.Remove(vehicle);
             }
             _dbContext.SaveChanges();
+        }
+
+        public Vehicle UpdateVehicle(Vehicle vehicle)
+        {
+            var originalVehicle = _dbContext.Vehicles.Find(vehicle.Id);
+
+            _dbContext.Entry(originalVehicle).State = EntityState.Detached;
+
+            PropertyInfo[] properties = typeof(Vehicle).GetProperties();
+            foreach (var property in properties)
+            {
+                var value = property.GetValue(vehicle);
+                if (value != null && property.Name != "UserId")
+                {
+                    typeof(Vehicle).GetProperty(property.Name)?.SetValue(originalVehicle, value);
+                }
+            }
+
+            _dbContext.Entry(originalVehicle).State = EntityState.Modified;
+            _dbContext.SaveChanges();
+
+            return originalVehicle;
         }
     }
 }

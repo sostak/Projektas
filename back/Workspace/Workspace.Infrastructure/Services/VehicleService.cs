@@ -59,6 +59,7 @@ namespace Workspace.Infrastructure.Services
 
         public async Task<IEnumerable<VehicleResponseDto>> GetFilteredVehicles(Filters filters)
         {
+            //pasidaryt metoduka stringui boolui ir intui i kuri paduoti car.value ir filter.value 
             var vehicles = await _vehicleRepository.GetVehicles();
             var filteredVehicles = vehicles.Where(car =>
                (string.IsNullOrWhiteSpace(filters.Make) || car.Make == filters.Make) &&
@@ -121,6 +122,14 @@ namespace Workspace.Infrastructure.Services
         public void Delete()
         {
             _vehicleRepository.Delete();
+        }
+
+        public VehicleResponseDto UpdateVehicle(UpdateVehicleRequestDto vehicleDto)
+        {
+            var vehicle = _mapper.Map<Vehicle>(vehicleDto);
+            var response = _vehicleRepository.UpdateVehicle(vehicle);
+            var responseDto = _mapper.Map<VehicleResponseDto>(response);
+            return responseDto;
         }
     }
 }

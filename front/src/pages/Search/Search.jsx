@@ -3,13 +3,14 @@ import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../components/Loader';
 import './Search.css';
+import Get from '../../services/APIService';
 
 const SearchResults = () => {
   const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(true);
   const [makes, setMakes] = useState();
   const [models, setModels] = useState([]);
-  const connectionMakes = 'https://localhost:7291/api/Categories/makes';
   const [modelsDisabled, setModelsEnabled] = useState(true);
 
   const [make, setMake] = useState('');
@@ -30,17 +31,25 @@ const SearchResults = () => {
   const [city, setCity] = useState();*/
 
   useEffect(() => {
-    try{
+    /*try{
       const fetchMakes = async () => {
         const data = await (await fetch(connectionMakes)).json();
         setMakes(data);
-        console.log(data);
       };
       fetchMakes();
     }
     catch(error){
       navigate('*');
-    }
+    }*/
+    const fetchData = async () => {
+      const getMakes = await Get('Categories/makes');
+      if(!getMakes){
+        navigate('*');
+      }
+      setMakes(getMakes);
+      setLoading(false);
+    };
+    fetchData();
   },[]);
 
   const fetchModels = async (connectionModels) => {
@@ -48,7 +57,7 @@ const SearchResults = () => {
     setModels(data);
   };
 
-  if(!makes){
+  if(loading){
     return <Loader></Loader>;
   }
 
@@ -63,7 +72,11 @@ const SearchResults = () => {
 
   const handleSearch = () => {
     //navigate('searchResults', {state: {filters: `filter?Make=${make}&Model=${model}&MinPrice=${minPrice}`}});
-    navigate(`searchResults/filter?Make=${make}&Model=${model}&MinPrice=${minPrice}`);
+    //navigate(`searchResults/filter?Make=${make}&Model=${model}`);
+    const params = new URLSearchParams();
+    make && params.append('Make', make);
+    model && params.append('Model', model);
+    navigate(`searchResults/filters?${params.toString()}`);
   };
 
 

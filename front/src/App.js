@@ -7,8 +7,10 @@ import Listing from './pages/Listing/Listing.jsx';
 import SearchResults from './pages/SearchResults.jsx';
 import Search from './pages/Search/Search.jsx';
 import Upload from './pages/Upload.jsx';
+import PersonalInformation from './pages/PersonalInformation';
 
 function App() {
+
   return (
     <BrowserRouter>
       <NavigationBar/>
@@ -17,6 +19,7 @@ function App() {
         <Route path="searchResults/:filters" element={<SearchResults />} />
         <Route path="upload" element={<Upload />} />
         <Route path="listing/:listingId" element={<Listing />} />
+        <Route path="personalInformation" element={<PersonalInformation />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>

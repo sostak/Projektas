@@ -47,8 +47,15 @@ const Listing = () => {
       <Table striped bordered hover>
         <thead></thead>
         <tbody>
-          <TableRow text={'Metai'} data={car.year}/>
+          <TableRow text={'Metai'} data={car.year.toString()}/>
           <TableRow text={'Kuro tipas'} data={car.fuel}/>
+          <TableRow text={'Kėbulo tipas'} data={car.bodyType}/>
+          <TableRow text={'Įkraunamas'} data={car.plugIn ? 'Taip' : null}/>
+          <TableRow text={'Varantieji ratai'} data={car.drivenWheels}/>
+          <TableRow text={'Galia'} data={car.power.toString()}/>
+          <TableRow text={'Darbinis tūris'} data={car.engineCapacity.toString()}/>
+          <TableRow text={'Šalis'} data={car.country}/>
+          <TableRow text={'Miestas'} data={car.city}/>
           <tr>
             <td colSpan={2} style={{ textAlign: 'center' }}>{car.description}</td>
           </tr>

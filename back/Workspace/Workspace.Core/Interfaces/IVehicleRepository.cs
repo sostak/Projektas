@@ -1,4 +1,5 @@
-﻿using Workspace.Domain.Models;
+﻿using Workspace.Core.Dto.Requests;
+using Workspace.Domain.Models;
 
 namespace Workspace.Core.Interfaces
 {
@@ -6,6 +7,7 @@ namespace Workspace.Core.Interfaces
     {
         Task<IEnumerable<Vehicle>> GetVehicles();
         Task<Vehicle> AddVehicle(Vehicle vehicle, List<Image> images);
+        Vehicle UpdateVehicle(Vehicle vehicle);
         void Delete();
     }
 }

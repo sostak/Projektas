@@ -11,6 +11,7 @@ namespace Workspace.Core.Mapping
         {
             CreateMap<CreateVehicleRequestDto, Vehicle>();
             CreateMap<Vehicle, VehicleResponseDto>();
+            CreateMap<UpdateVehicleRequestDto, Vehicle>();
         }
     }
 }

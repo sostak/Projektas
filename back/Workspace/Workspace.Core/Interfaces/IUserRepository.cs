@@ -8,5 +8,6 @@ namespace Workspace.Core.Interfaces
         Task<User?> GetByEmailOrDefaultAsync(string email);
         Task<IEnumerable<User>> GetAllUsers();
         Task AddUser(User user);
+        User UpdateUser(User user);
     }
 }

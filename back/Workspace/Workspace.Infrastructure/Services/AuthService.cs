@@ -81,5 +81,31 @@ namespace Workspace.Infrastructure.Services
             var userDto = _mapper.Map<UserResponseDto>(user);
             return userDto;
         }
+
+        public UserResponseDto Update(UpdateUserRequestDto request, Guid id)
+        {
+            var user = _mapper.Map<User>(request);
+            user.Id = id;
+            if(request.Password != null)
+            {
+                var password = HashPassword(request.Password);
+                user.PasswordSalt = password.PasswordSalt;
+                user.PasswordHash = password.PasswordHash;
+            }
+            var response = _userRepository.UpdateUser(user);
+            var responseDto = _mapper.Map<UserResponseDto>(response);
+            return responseDto;
+        }
+
+        public async Task<bool> CheckPassword(string password, Guid userId)
+        {
+            var user = await _userRepository.GetByIdAsync(userId);
+            var hashedPassword = HashPassword(password);
+            if(hashedPassword.PasswordHash == user.PasswordHash && hashedPassword.PasswordSalt == user.PasswordSalt)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

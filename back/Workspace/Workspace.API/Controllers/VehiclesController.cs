@@ -48,6 +48,12 @@ namespace Workspace.API.Controllers
         {
             _vehicleService.Delete();
         }
+        [HttpPut]
+        public IActionResult Update(UpdateVehicleRequestDto vehicleDto) {
+            var response = _vehicleService.UpdateVehicle(vehicleDto);
+            return Ok(response);
+        }
+   
         private Guid UserId
         {
             get

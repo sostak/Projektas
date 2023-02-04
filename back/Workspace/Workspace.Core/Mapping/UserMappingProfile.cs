@@ -11,6 +11,7 @@ namespace Workspace.Core.Mapping
         {
             CreateMap<CreateUserRequestDto, User>();
             CreateMap<User, UserResponseDto>();
+            CreateMap<UpdateUserRequestDto, User>();
         }
     }
 }

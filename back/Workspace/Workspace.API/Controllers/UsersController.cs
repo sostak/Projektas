@@ -37,7 +37,13 @@ namespace Workspace.API.Controllers
 
             return Ok(user);
         }
-
+        [HttpGet("CheckPassword")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<ActionResult<bool>> CheckPassword(string password)
+        {
+            var passwordGood = await _authService.CheckPassword(password, UserId);
+            return Ok(passwordGood);
+        }
         [HttpPost("Login")]
         public async Task<ActionResult<JwtDto>> Login([FromBody] LoginCommand command)
         {
@@ -51,6 +57,13 @@ namespace Workspace.API.Controllers
         {
             var response = await _authService.Register(request);
 
+            return Ok(response);
+        }
+        [HttpPut]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public IActionResult Update(UpdateUserRequestDto userDto)
+        {
+            var response = _authService.Update(userDto, UserId);
             return Ok(response);
         }
 

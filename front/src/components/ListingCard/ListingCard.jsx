@@ -6,12 +6,13 @@ import PropTypes from 'prop-types';
 
 const ListingCard = ({car}) => {
   const navigate = useNavigate();
-  console.log(car.images[0]);
+
   return (
     <Card onClick={() => navigate(`/listing/${car.id}`)}>
-      <Card.Img variant="top" src={car.images[0]} />
+      <Card.Img variant="top" src={car.images.length > 0 && car.images[0].imageUrl} />
       <Card.Body>
         <Card.Title>{car.make} {car.model}</Card.Title>
+        <h3>{car.price}€</h3>
         <h4>
           {car.year && <Badge>{car.year}</Badge>}
           {car.fuel && <Badge>{car.fuel}</Badge>}
