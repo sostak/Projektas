@@ -52,6 +52,7 @@ namespace Workspace.Infrastructure.Services
             {
                 var vehicleDto = _mapper.Map<VehicleResponseDto>(vehicle);
                 vehicleDto.PhoneNumber = vehicle.User.PhoneNumber;
+                vehicleDto.UserId = vehicle.UserId;
                 return vehicleDto;
             }
             return null;
@@ -77,7 +78,8 @@ namespace Workspace.Infrastructure.Services
                (filters.MinEngineCapacity == null || car.EngineCapacity > filters.MinEngineCapacity) &&
                (filters.MaxEngineCapacity == null || car.EngineCapacity < filters.MaxEngineCapacity) &&
                (string.IsNullOrWhiteSpace(filters.Country) || car.Country == filters.Country) &&
-               (string.IsNullOrWhiteSpace(filters.City) || car.City == filters.City)).ToList();
+               (string.IsNullOrWhiteSpace(filters.City) || car.City == filters.City) &&
+               (filters.UserId == null || filters.UserId == car.UserId)).ToList();
 
             var vehiclesDto = new List<VehicleResponseDto>();
             foreach (var vehicle in filteredVehicles)

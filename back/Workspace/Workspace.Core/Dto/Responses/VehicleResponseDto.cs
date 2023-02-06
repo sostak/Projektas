@@ -21,5 +21,6 @@
             public string? Description { get; set; }
             public List<ImageResponseDto> Images { get; set; }
             public string PhoneNumber { get; set; }
+            public Guid UserId { get; set; }
     }
 }

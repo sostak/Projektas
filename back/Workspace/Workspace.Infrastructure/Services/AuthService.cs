@@ -100,12 +100,15 @@ namespace Workspace.Infrastructure.Services
         public async Task<bool> CheckPassword(string password, Guid userId)
         {
             var user = await _userRepository.GetByIdAsync(userId);
-            var hashedPassword = HashPassword(password);
-            if(hashedPassword.PasswordHash == user.PasswordHash && hashedPassword.PasswordSalt == user.PasswordSalt)
+
+            using var hmac = new HMACSHA512(user.PasswordSalt);
+            var computedHash = hmac.ComputeHash(HashEncoding.GetBytes(password));
+
+            if (!computedHash.SequenceEqual(user.PasswordHash))
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
     }
 }

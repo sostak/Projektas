@@ -37,6 +37,10 @@ const UserDropdown = () => {
     navigate('personalInformation');
   };
 
+  const handleMyListings = () => {
+    navigate(`searchResults/filters?UserId=${user.id}`);
+  };
+
   if(loading){
     return <Loader></Loader>;
   }
@@ -44,7 +48,7 @@ const UserDropdown = () => {
   return (
     <Dropdown onToggle={() => setIsOpen(!isOpen)} show={isOpen}>
       <DropdownButton id="dropdown-basic-button" title={user.name}>
-        <Dropdown.Item >Mano skelbimai</Dropdown.Item>
+        <Dropdown.Item onClick={handleMyListings}>Mano skelbimai</Dropdown.Item>
         <Dropdown.Item onClick={handlePersonalInfo}>Asmeninė informacija</Dropdown.Item>
         <Dropdown.Divider />
         <Button variant="danger" onClick={handleLogout}>Atsijungti</Button>

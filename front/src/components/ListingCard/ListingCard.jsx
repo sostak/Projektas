@@ -19,8 +19,8 @@ const ListingCard = ({car}) => {
           {car.bodyType && <Badge>{car.bodyType}</Badge>}
           {car.plugIn && <Badge>Plug-In</Badge>}
           {car.drivenWheels && <Badge>{car.drivenWheels}</Badge>}
-          {car.power && <Badge>{car.power}</Badge>}
-          {car.engineCapacity && <Badge>{car.engineCapacity}</Badge>}
+          {car.power && <Badge>{car.power}kW</Badge>}
+          {car.engineCapacity && <Badge>{car.engineCapacity}cc</Badge>}
           {car.country && <Badge>{car.country}</Badge>}
           {car.city && <Badge>{car.city}</Badge>}
         </h4>

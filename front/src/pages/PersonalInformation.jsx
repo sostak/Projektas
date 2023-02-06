@@ -29,7 +29,6 @@ const PersonalInformation = () => {
         );
         const responseData = await response.json();
         setUser(responseData);
-        console.log(responseData);
         setLoading(false);
       }
       catch(error){
@@ -42,7 +41,19 @@ const PersonalInformation = () => {
   const handleUpdate = async (event) => {
     event.preventDefault();
 
-    if(oldPassword && (!await Get(`/Users/CheckPassword?password=${oldPassword}`) || repeatPassword != newPassword)){
+    const correctPassword = await fetch(`https://localhost:7291/api/Users/CheckPassword?password=${oldPassword}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${Cookies.get('token')}` }
+    }
+    );
+    const response = await correctPassword.json();
+    console.log(response);
+
+    console.log(!passwordDisabled);
+    console.log(!response);
+    console.log(repeatPassword != newPassword);
+
+    if(!passwordDisabled && (!response || repeatPassword != newPassword)){
       navigate('*');
     }
 
@@ -67,6 +78,10 @@ const PersonalInformation = () => {
     catch (error){
       console.error(error);
     }
+  };
+
+  const handleClick = async() =>{
+    console.log(await Get(`Users/CheckPassword?password=${oldPassword}`));
   };
 
   if(loading){
@@ -109,6 +124,9 @@ const PersonalInformation = () => {
       <br/>
       <Button className="mb-3" onClick={handleUpdate}>
         Atnaujinti
+      </Button>
+      <Button className="mb-3" onClick={handleClick}>
+        Atnaujinti123
       </Button>
     </Form>
   );

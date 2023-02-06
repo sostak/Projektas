@@ -1,104 +1,243 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+import { Form, Button } from 'react-bootstrap';
+import Cookies from 'js-cookie';
+import Loader from '../components/Loader';
 import { useNavigate } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import uuid from 'react-uuid';
-import { FormGroup } from 'react-bootstrap';
 
 const Upload = () => {
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    make: '',
+    model: '',
+    price: 0,
+    year: 0,
+    fuel: '',
+    bodyType: '',
+    plugIn: false,
+    drivenWheels: '',
+    power: 0,
+    engineCapacity: 0,
+    country: '',
+    city: '',
+    description: '',
+    thumbnailBase64: '',
+  });
 
-  // nuotrauka
-  //const [file, setFile] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(null);
-  const [base64, setBase64] = useState(null);
-  //const [uploaded, setUploaded] = useState(false);
+  const [imageFiles, setImageFiles] = useState([]);
+  const [thumbnailIndex, setThumbnailImageIndex] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  const handleInputChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
 
   const handleFileChange = (event) => {
-    const selectedFile = event.target.files[0];
-    //setFile(selectedFile);
-    setPreviewUrl(URL.createObjectURL(selectedFile));
-    const reader = new FileReader();
-    reader.readAsDataURL(selectedFile);
-    reader.onload = () => {
-      setBase64(reader.result);
-      console.log(reader.result);
-    };
+    const files = Array.from(event.target.files);
+    const imagePromises = files.map(async (file) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      return new Promise((resolve) => {
+        reader.onload = () => {
+          const base64Image = reader.result;
+          const pureBase64 = base64Image.split(',')[1];
+          resolve(pureBase64);
+        };
+      });
+    });
+    Promise.all(imagePromises).then((pureBase64Images) => {
+      setImageFiles(pureBase64Images);
+    });
   };
+  
 
-  const handleUpload = (/*event*/) => {
-    /*event.preventDefault();
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      setBase64(reader.result);
-      console.log(reader.result);
-    };*/
-    console.log(base64);
-  };
-
-  const onSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = 
-      {
-        'Id': uuid(),
-        'Make': event.target.make.value,
-        'Model': event.target.model.value,
-        'Price': event.target.price.value
-      };
+    setLoading(true);
+    const carListing = {
+      ...formData,
+      imagesBase64: imageFiles.filter((image) => image !== imageFiles[thumbnailIndex]),
+    };
+    console.log(JSON.stringify(carListing));
     try{
-      const response = await fetch('https://localhost:7291/api/Listings', {
+      const response = await fetch('https://localhost:7291/api/Vehicles', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
+        headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${Cookies.get('token')}` },
+        body: JSON.stringify(carListing)
       }
       );
       const responseData = await response.json();
+      console.log(responseData);
       navigate(`/listing/${responseData.id}`);
     }
     catch (error){
-      setError(true);
+      console.log(error);
+    }
+    finally{
+      setLoading(false);
     }
   };
 
-  if(error){
-    return(
-      <h1>Error</h1>
-    );
-  }
+  const handleThumbnailSelection = (index) => {
+    console.log(index);
+    setThumbnailImageIndex(index);
+    setFormData({ ...formData, 'thumbnailBase64': imageFiles[index] });
+    console.log(formData);
+  };
 
   return (
-    <Form onSubmit={onSubmit}>
-      <Form.Group className="mb-3" controlId="make">
-        <Form.Label>Gamintojas</Form.Label>
-        <Form.Control type="text" placeholder="Gamintojas" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="model">
-        <Form.Label>Modelis</Form.Label>
-        <Form.Control type="text" placeholder="Modelis" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="price">
-        <Form.Label>Kaina</Form.Label>
-        <Form.Control type="number" placeholder="Kaina" />
-      </Form.Group>
-
-      <FormGroup className="mb-3" controlId="image">
-        <Form.Label>Nuotrauka</Form.Label>
-        <Form.Control type="file" onChange={handleFileChange}></Form.Control>
-      </FormGroup>
-      {previewUrl && <img src={previewUrl} alt="Preview" width="300" height="300" />}
-      {/*uploaded && <p>File has been uploaded!</p>*/}
-      {base64 && <img src={base64} alt="Uploaded" />}
-
-      <Button variant="secondary" onClick={handleUpload}>
-        nuotrauka
-      </Button>
-
-      <Button variant="primary" type="submit">
-        Ikelti
-      </Button>
-    </Form>
+    loading ? <Loader></Loader> :
+      <Form onSubmit={handleSubmit}>
+        <Form.Group>
+          <Form.Label>Make</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter make"
+            name="make"
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Model</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter model"
+            name="model"
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Price</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Enter price"
+            name="price"
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Year</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Enter year"
+            name="year"
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Fuel</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter fuel"
+            name="fuel"
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Body type</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter body type"
+            name="bodyType"
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Plug in</Form.Label>
+          <Form.Check
+            type="checkbox"
+            name="plugIn"
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Driven wheels</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter driven wheels"
+            name="drivenWheels"
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Power</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Enter power"
+            name="power"
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>EngineCapacity</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Enter engine capacity"
+            name="engineCapacity"
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Country</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter country"
+            name="country"
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Miestas</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter city"
+            name="city"
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter description"
+            name="description"
+            onChange={handleInputChange}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Images</Form.Label>
+          <Form.Control
+            type="file"
+            placeholder="Upload up to 30 images"
+            name="imagesBase64"
+            multiple
+            onChange={handleFileChange}
+          />
+        </Form.Group>
+        {imageFiles.length > 0 && (
+          <div>
+            <p>Select a thumbnail:</p>
+            {imageFiles.map((file, index) => (
+              <div key={index}>
+                <img
+                  src={`data:image/jpeg;base64,${file}`}
+                  alt={`Image ${index + 1}`}
+                  style={{
+                    height: '100px',
+                    marginRight: '10px',
+                    cursor: 'pointer',
+                  }}
+                  onClick={() => handleThumbnailSelection(index)}
+                  className={index === thumbnailIndex ? 'selected' : ''}
+                />
+              </div>
+            ))}
+          </div>
+        )}
+        <Button variant="primary" type="submit">
+        Submit
+        </Button>
+      </Form>
   );
 };
 
