@@ -1,15 +1,38 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Dropdown, Form } from 'react-bootstrap';
-import login from '../services/authService.js';
+import apiService from '../services/api';
+import { API_ENDPOINTS } from '../constants/apiEndpoints';
+import { TokenContext } from '../App';
 
 const LoginDropdown = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState();
+  const {setToken} = useContext(TokenContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    login(email, password, setError);
+
+    const data = 
+          {
+            'email': email,
+            'password': password,
+          };
+    const config = {
+      headers: {'Content-Type': 'application/json'},
+    };
+
+    try{
+      const response = await apiService.post(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.USER_LOGIN}`, data, config);
+      setToken(response.accessToken);
+
+      const expiration = new Date();
+      expiration.setHours(expiration.getHours() + 1);
+      Cookies.set('token', response.accessToken, { expires: expiration });
+    }
+    catch (error){
+      setError(true);
+    }
   };
 
   if(error){

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import Loader from '../components/Loader';
 import Cookies from 'js-cookie';
-import Get from '../services/APIService';
+//import Get from '../services/APIService';
 import { useNavigate } from 'react-router-dom';
 
 const PersonalInformation = () => {
@@ -47,11 +47,6 @@ const PersonalInformation = () => {
     }
     );
     const response = await correctPassword.json();
-    console.log(response);
-
-    console.log(!passwordDisabled);
-    console.log(!response);
-    console.log(repeatPassword != newPassword);
 
     if(!passwordDisabled && (!response || repeatPassword != newPassword)){
       navigate('*');
@@ -81,7 +76,7 @@ const PersonalInformation = () => {
   };
 
   const handleClick = async() =>{
-    console.log(await Get(`Users/CheckPassword?password=${oldPassword}`));
+    //console.log(await Get(`Users/CheckPassword?password=${oldPassword}`));
   };
 
   if(loading){

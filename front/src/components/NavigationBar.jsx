@@ -1,23 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext} from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { HouseFill } from 'react-bootstrap-icons';
 import LoginDropdown from './LoginDropdown';
 import UserDropdown from './UserDropdown';
-import Cookies from 'js-cookie';
+import { TokenContext } from '../App';
 
 const NavigationBar = () => {
-  const [token, setToken] = useState(Cookies.get('token'));
-
-  useEffect(() => {
-    const checkToken = () => {
-      setToken(Cookies.get('token'));
-      setTimeout(checkToken, 500);
-    };
-    checkToken();
-  }, []);
-
+  const {token} = useContext(TokenContext);
 
   return (
     <Navbar bg="dark" variant="dark">

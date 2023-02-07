@@ -7,7 +7,11 @@ using Workspace.Infrastructure.Repositories;
 using Workspace.Infrastructure.Services;
 using Microsoft.OpenApi.Models;
 using Microsoft.IdentityModel.Tokens;
+
 using System.Text;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -83,6 +87,7 @@ builder.Services.AddAuthentication(x =>
         ValidateLifetime = true,
     };
 });
+
 
 var app = builder.Build();
 

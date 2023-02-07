@@ -303,3 +303,4 @@ C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.AP
 C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.API\bin\Debug\net6.0\System.ServiceModel.dll
 C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.API\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.API\bin\Debug\net6.0\System.Linq.Async.dll
+C:\Users\nojus\Desktop\Praktika\PC project\Projektas\back\Workspace\Workspace.API\bin\Debug\net6.0\microsoft.identitymodel.dll

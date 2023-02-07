@@ -99,6 +99,10 @@
               "target": "Package",
               "version": "[7.0.1, )"
             },
+            "Microsoft.IdentityModel": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"

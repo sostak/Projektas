@@ -126,9 +126,15 @@ namespace Workspace.Infrastructure.Services
             _vehicleRepository.Delete();
         }
 
-        public VehicleResponseDto UpdateVehicle(UpdateVehicleRequestDto vehicleDto)
+        public async Task<VehicleResponseDto> UpdateVehicle(UpdateVehicleRequestDto vehicleDto, Guid UserId)
         {
             var vehicle = _mapper.Map<Vehicle>(vehicleDto);
+            var originalVehicle = await GetVehicle(vehicle.Id);
+            if(originalVehicle.UserId != UserId)
+            {
+                throw new Exception("Permission denied");
+            }
+
             var response = _vehicleRepository.UpdateVehicle(vehicle);
             var responseDto = _mapper.Map<VehicleResponseDto>(response);
             return responseDto;

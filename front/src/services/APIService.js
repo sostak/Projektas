@@ -1,4 +1,4 @@
-import constants from '../configuration/Constants.json';
+/*import constants from '../configuration/Constants.json';
 
 const Get = async (route) => {
   try{
@@ -10,4 +10,4 @@ const Get = async (route) => {
   }
 };
 
-export default Get;
+export default Get;*/

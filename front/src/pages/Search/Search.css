@@ -1,5 +1,5 @@
-.filterBox{
-    margin:auto;
+/*.filterBox{
+    /*margin:auto;
     margin-top: 5px;
     padding:10px;
     width:85%;
@@ -14,4 +14,37 @@
 .filterBox:hover{
     border-radius: 0% 0% 50% 50% / 0% 0% 5% 5% ;
     box-shadow: 10px 10px rgba(0,0,0,.25);
+}*//*
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}*/
+
+/*.filterBox {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  }
+  
+  /* Pre-render the bigger shadow, but hide it */
+  /*.filterBox::after {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  /* Transition to showing the bigger shadow on hover */
+  /*.filterBox:hover::after {
+    opacity: 1;
+  }*/
+.filterBox{
+    margin:auto;
+    margin-top: 5px;
+    padding:10px;
+    width:85%;
+    position: relative;
+    background: white;
+    border: solid 1px rgba(128, 128, 128, 0.5);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    transition: box-shadow 0.3s ease-in-out;
 }
+
+.filterBox:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }

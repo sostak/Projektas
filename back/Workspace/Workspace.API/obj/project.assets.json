@@ -796,6 +796,15 @@
           "lib/netcoreapp2.1/Microsoft.Identity.Client.Extensions.Msal.dll": {}
         }
       },
+      "Microsoft.IdentityModel/7.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net35/microsoft.identitymodel.dll": {}
+        },
+        "runtime": {
+          "lib/net35/microsoft.identitymodel.dll": {}
+        }
+      },
       "Microsoft.IdentityModel.Abstractions/6.25.1": {
         "type": "package",
         "compile": {
@@ -4026,6 +4035,18 @@
         "lib/netstandard2.0/Microsoft.Identity.Client.Extensions.Msal.xml",
         "microsoft.identity.client.extensions.msal.2.19.3.nupkg.sha512",
         "microsoft.identity.client.extensions.msal.nuspec"
+      ]
+    },
+    "Microsoft.IdentityModel/7.0.0": {
+      "sha512": "55LP0/gF3OAGhPNw/QxJs9q72xyS8rJ4ndZJC+GMSEjARh4hPmGVet2Oa9B8p8KKl3g8u3e+mh6WoBoUa0AiAA==",
+      "type": "package",
+      "path": "microsoft.identitymodel/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/microsoft.identitymodel.dll",
+        "microsoft.identitymodel.7.0.0.nupkg.sha512",
+        "microsoft.identitymodel.nuspec"
       ]
     },
     "Microsoft.IdentityModel.Abstractions/6.25.1": {
@@ -8696,6 +8717,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.1",
       "Microsoft.EntityFrameworkCore.Sqlite >= 7.0.2",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.1",
+      "Microsoft.IdentityModel >= 7.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3",
       "Workspace.Core >= 1.0.0",
       "Workspace.Infrastructure >= 1.0.0"
@@ -8800,6 +8822,10 @@
             "target": "Package",
             "version": "[7.0.1, )"
           },
+          "Microsoft.IdentityModel": {
+            "target": "Package",
+            "version": "[7.0.0, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.2.3, )"
@@ -8826,5 +8852,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.IdentityModel 7.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.IdentityModel",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

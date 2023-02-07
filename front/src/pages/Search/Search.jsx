@@ -3,7 +3,8 @@ import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../components/Loader';
 import './Search.css';
-import Get from '../../services/APIService';
+import apiService from '../../services/api';
+import { API_ENDPOINTS } from '../../constants/apiEndpoints';
 
 const SearchResults = () => {
   const navigate = useNavigate();
@@ -13,8 +14,8 @@ const SearchResults = () => {
   const [models, setModels] = useState([]);
   const [modelsDisabled, setModelsEnabled] = useState(true);
 
-  const [make, setMake] = useState('');
-  const [model, setModel] = useState('');
+  const [make, setMake] = useState('Gamintojas');
+  const [model, setModel] = useState('Modelis');
   //const [minPrice, setMinPrice] = useState('');
   /*const [maxPrice, setMaxPrice] = useState();
   const [minYear, setMinYear] = useState();
@@ -31,30 +32,27 @@ const SearchResults = () => {
   const [city, setCity] = useState();*/
 
   useEffect(() => {
-    /*try{
-      const fetchMakes = async () => {
-        const data = await (await fetch(connectionMakes)).json();
-        setMakes(data);
-      };
-      fetchMakes();
-    }
-    catch(error){
-      navigate('*');
-    }*/
     const fetchData = async () => {
-      const getMakes = await Get('Categories/makes');
-      if(!getMakes){
-        navigate('*');
+      try{
+        const makesResponse = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.MAKES}`);
+        setMakes(makesResponse);
+        setLoading(false);
       }
-      setMakes(getMakes);
-      setLoading(false);
+      catch(error){
+        console.error(error);
+      }
     };
     fetchData();
   },[]);
 
-  const fetchModels = async (connectionModels) => {
-    const data = await (await fetch(connectionModels)).json();
-    setModels(data);
+  const fetchModels = async () => {
+    try{
+      const modelsRequest = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.MODELS}${event}`);
+      setModels(modelsRequest);
+    }
+    catch(error){
+      console.error(error);
+    }
   };
 
   if(loading){
@@ -64,15 +62,13 @@ const SearchResults = () => {
   const handleMake = (event) => {
     setMake(event);
     setModelsEnabled(false);
-    fetchModels(`https://localhost:7291/api/Categories/models/${event}`);
+    fetchModels();
   };
   const handleModel = (event) => {
     setModel(event);
   };
 
   const handleSearch = () => {
-    //navigate('searchResults', {state: {filters: `filter?Make=${make}&Model=${model}&MinPrice=${minPrice}`}});
-    //navigate(`searchResults/filter?Make=${make}&Model=${model}`);
     const params = new URLSearchParams();
     make && params.append('Make', make);
     model && params.append('Model', model);

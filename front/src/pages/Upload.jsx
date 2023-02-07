@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import Cookies from 'js-cookie';
@@ -25,7 +24,6 @@ const Upload = () => {
   });
 
   const [imageFiles, setImageFiles] = useState([]);
-  const [thumbnailIndex, setThumbnailImageIndex] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const handleInputChange = (event) => {
@@ -56,33 +54,26 @@ const Upload = () => {
     setLoading(true);
     const carListing = {
       ...formData,
-      imagesBase64: imageFiles.filter((image) => image !== imageFiles[thumbnailIndex]),
+      imagesBase64: imageFiles.filter((image) => image !== imageFiles[0]),
+      thumbnailBase64: imageFiles[0],
     };
-    console.log(JSON.stringify(carListing));
-    try{
-      const response = await fetch('https://localhost:7291/api/Vehicles', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${Cookies.get('token')}` },
-        body: JSON.stringify(carListing)
-      }
-      );
-      const responseData = await response.json();
-      console.log(responseData);
-      navigate(`/listing/${responseData.id}`);
+    const response = await fetch('https://localhost:7291/api/Vehicles', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${Cookies.get('token')}` },
+      body: JSON.stringify(carListing)
     }
-    catch (error){
-      console.log(error);
-    }
-    finally{
-      setLoading(false);
-    }
+    );
+    const responseData = await response.json();
+    console.log(responseData);
+    navigate(`/listing/${responseData.id}`);
+
+    setLoading(false);
   };
 
   const handleThumbnailSelection = (index) => {
-    console.log(index);
-    setThumbnailImageIndex(index);
-    setFormData({ ...formData, 'thumbnailBase64': imageFiles[index] });
-    console.log(formData);
+    const swappedImageFiles = [...imageFiles];
+    [swappedImageFiles[0], swappedImageFiles[index]] = [swappedImageFiles[index], swappedImageFiles[0]];
+    setImageFiles(swappedImageFiles);
   };
 
   return (
@@ -228,7 +219,6 @@ const Upload = () => {
                     cursor: 'pointer',
                   }}
                   onClick={() => handleThumbnailSelection(index)}
-                  className={index === thumbnailIndex ? 'selected' : ''}
                 />
               </div>
             ))}

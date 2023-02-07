@@ -1,25 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Dropdown, DropdownButton, Button } from 'react-bootstrap';
 import Cookies from 'js-cookie';
 import Loader from './Loader';
 import { useNavigate } from 'react-router-dom';
+import apiService from '../services/api';
+import { API_ENDPOINTS } from '../constants/apiEndpoints';
+import { TokenContext } from '../App';
 
 const UserDropdown = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
+  const {token, setToken} = useContext(TokenContext);
 
   useEffect(() => {
     const fetchData = async () => {
       try{
-        const response = await fetch('https://localhost:7291/api/Users/GetMe', {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${Cookies.get('token')}` }
-        }
-        );
-        const responseData = await response.json();
-        setUser(responseData);
+        const config = {
+          headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${token}` }
+        };
+        const response = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.USER_GET}`, config);
+        setUser(response);
         setLoading(false);
       }
       catch(error){
@@ -31,6 +33,7 @@ const UserDropdown = () => {
 
   const handleLogout = () => {
     Cookies.remove('token');
+    setToken(null);
   };
 
   const handlePersonalInfo = () => {

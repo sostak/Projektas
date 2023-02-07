@@ -9,9 +9,10 @@ const ListingCard = ({car}) => {
 
   return (
     <Card onClick={() => navigate(`/listing/${car.id}`)}>
-      <Card.Img variant="top" src={car.images.length > 0 && car.images[0].imageUrl} />
+      <Card.Img variant="top" src={car.images.length > 0 && car.images.filter(image => image.isThumbnail)[0].imageUrl} />
       <Card.Body>
         <Card.Title>{car.make} {car.model}</Card.Title>
+        {!car.isActive && <Card.Subtitle>NEAKTYVUS</Card.Subtitle>}
         <h3>{car.price}€</h3>
         <h4>
           {car.year && <Badge>{car.year}</Badge>}

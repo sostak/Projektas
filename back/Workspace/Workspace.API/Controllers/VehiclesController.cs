@@ -49,8 +49,9 @@ namespace Workspace.API.Controllers
             _vehicleService.Delete();
         }
         [HttpPut]
-        public IActionResult Update(UpdateVehicleRequestDto vehicleDto) {
-            var response = _vehicleService.UpdateVehicle(vehicleDto);
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> Update(UpdateVehicleRequestDto vehicleDto) {
+            var response = await _vehicleService.UpdateVehicle(vehicleDto, UserId);
             return Ok(response);
         }
    

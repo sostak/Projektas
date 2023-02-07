@@ -1,4 +1,6 @@
-﻿namespace Workspace.Core.Dto.Requests
+﻿using Workspace.Domain.Models;
+
+namespace Workspace.Core.Dto.Requests
 {
     public class UpdateVehicleRequestDto
     {
