@@ -1,5 +1,5 @@
 import './Listing.css';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
@@ -10,31 +10,32 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 import ImageGallery from 'react-image-gallery';
 import TableRow from '../../components/TableRow';
 import Cookies from 'js-cookie';
+import { AuthContext } from '../../App';
+import { API_ENDPOINTS } from '../../constants/apiEndpoints';
+import apiService from '../../services/api';
 
 const Listing = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const connection = `https://localhost:7291/api/Vehicles/${params.listingId}`;
+  //const connection = `https://localhost:7291/api/Vehicles/${params.listingId}`;
   const [car, setCar] = useState(null);
   const [thisUsersListing, setThisUsersListing] = useState(false);
   const [loading, setLoading] = useState(false);
+  const {token} = useContext(AuthContext);
+
 
   useEffect(() => {
     try{
       const fetchData = async () => {
-        const data = await (await fetch(connection)).json();
-        setCar(data.result);
+        const carResponse = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.VEHICLE}/${params.listingId}`);
+        setCar(carResponse.result);
 
-        if(Cookies.get('token')){
-          const response = await fetch('https://localhost:7291/api/Users/GetMe', {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${Cookies.get('token')}` }
-          }
-          );
-          const responseData = await response.json();
-          console.log(responseData);
-          console.log(data);
-          if(responseData.id === data.result.userId){
+        if(token){
+          const config = {
+            headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${token}` }
+          };
+          const userResponse = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.USER_GET}`, config);
+          if(carResponse.result.userId === userResponse.id){
             setThisUsersListing(true);
           }
         }
@@ -82,6 +83,7 @@ const Listing = () => {
     }
   };
 
+  console.log(car);
   const galleryImages = car.images.map( image => ({ original: image.imageUrl, thumbnail: image.imageUrl }));
   
   return (

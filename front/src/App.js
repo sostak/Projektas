@@ -9,13 +9,13 @@ import Search from './pages/Search/Search.jsx';
 import Upload from './pages/Upload.jsx';
 import PersonalInformation from './pages/PersonalInformation';
 
-export const TokenContext = createContext();
+export const AuthContext = createContext();
 
 function App() {
   const [token, setToken] = useState();
   return (
     <BrowserRouter>
-      <TokenContext.Provider value={{token, setToken}}>
+      <AuthContext.Provider value={{token, setToken}}>
         <NavigationBar/>
         <Routes>
           <Route index element={<Search />} />
@@ -25,7 +25,7 @@ function App() {
           <Route path="personalInformation" element={<PersonalInformation />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
-      </TokenContext.Provider>
+      </AuthContext.Provider>
     </BrowserRouter>
   );
 }

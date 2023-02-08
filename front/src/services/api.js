@@ -10,8 +10,8 @@ const post = async (url, data, config) => {
   return response.data;
 };
 
-const put = async (url, data) => {
-  const response = await axios.put(url, data);
+const put = async (url, data, config) => {
+  const response = await axios.put(url, data, config);
   return response.data;
 };
 

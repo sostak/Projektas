@@ -9,5 +9,5 @@ export const API_ENDPOINTS = {
   USER_GET: '/Users/GetMe',
   USER_PUT: '/Users',
   VEHICLES_FILTER: '/Vehicles/filter',
-  VEHICLE: '/Vehicle'
+  VEHICLE: '/Vehicles'
 };

@@ -1,14 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { Button, Dropdown, Form } from 'react-bootstrap';
-import apiService from '../services/api';
-import { API_ENDPOINTS } from '../constants/apiEndpoints';
-import { TokenContext } from '../App';
+import apiService from '../../services/api';
+import { API_ENDPOINTS } from '../../constants/apiEndpoints';
+import { AuthContext } from '../../App';
+import Cookies from 'js-cookie';
 
 const LoginDropdown = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState();
-  const {setToken} = useContext(TokenContext);
+  const {setToken} = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -29,6 +30,7 @@ const LoginDropdown = () => {
       const expiration = new Date();
       expiration.setHours(expiration.getHours() + 1);
       Cookies.set('token', response.accessToken, { expires: expiration });
+      console.log(Cookies.get('token'));
     }
     catch (error){
       setError(true);

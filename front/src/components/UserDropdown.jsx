@@ -5,14 +5,14 @@ import Loader from './Loader';
 import { useNavigate } from 'react-router-dom';
 import apiService from '../services/api';
 import { API_ENDPOINTS } from '../constants/apiEndpoints';
-import { TokenContext } from '../App';
+import { AuthContext } from '../App';
 
 const UserDropdown = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
-  const {token, setToken} = useContext(TokenContext);
+  const {token, setToken} = useContext(AuthContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +23,7 @@ const UserDropdown = () => {
         const response = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.USER_GET}`, config);
         setUser(response);
         setLoading(false);
+        console.log(response.id);
       }
       catch(error){
         console.error(error);

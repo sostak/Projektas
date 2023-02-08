@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Form, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../components/Loader';
 import './Search.css';
@@ -12,30 +13,32 @@ const SearchResults = () => {
   const [loading, setLoading] = useState(true);
   const [makes, setMakes] = useState();
   const [models, setModels] = useState([]);
-  const [modelsDisabled, setModelsEnabled] = useState(true);
+  const [modelsDisabled, setModelsDisabled] = useState(true);
 
-  const [make, setMake] = useState('Gamintojas');
-  const [model, setModel] = useState('Modelis');
-  //const [minPrice, setMinPrice] = useState('');
-  /*const [maxPrice, setMaxPrice] = useState();
-  const [minYear, setMinYear] = useState();
-  const [maxYear, setMaxYear] = useState();
-  const [Fuel, setFuel] = useState();
-  //body type will be implemented later
-  const [plugIn, setPlugIn] = useState();
-  const [drivenWheels, setDrivenWheels] = useState();
-  const [minPower, setMinPower] = useState();
-  const [maxPower, setMaxPower] = useState();
-  const [minEngineCapacity, setMinEngineCapacity] = useState();
-  const [maxEngineCapacity, setMaxEngineCapacity] = useState();
-  const [country, setCountry] = useState();
-  const [city, setCity] = useState();*/
+  const [formData, setFormData] = useState({
+    make: '',
+    model: '',
+    minPrice: 0,
+    maxPrice: 0,
+    minYear: 0,
+    maxYear: 0,
+    fuel: '',
+    bodyType: '',
+    plugIn: null,
+    drivenWheels: '',
+    minPower: 0,
+    maxPower: 0,
+    minEngineCapacity: 0,
+    maxEngineCapacity: 0,
+    country: '',
+    city: ''
+  });
 
   useEffect(() => {
     const fetchData = async () => {
       try{
         const makesResponse = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.MAKES}`);
-        setMakes(makesResponse);
+        setMakes(makesResponse.result);
         setLoading(false);
       }
       catch(error){
@@ -45,10 +48,10 @@ const SearchResults = () => {
     fetchData();
   },[]);
 
-  const fetchModels = async () => {
+  const fetchModels = async (make) => {
     try{
-      const modelsRequest = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.MODELS}${event}`);
-      setModels(modelsRequest);
+      const modelsRequest = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.MODELS}${make}`);
+      setModels(modelsRequest.result);
     }
     catch(error){
       console.error(error);
@@ -59,44 +62,69 @@ const SearchResults = () => {
     return <Loader></Loader>;
   }
 
-  const handleMake = (event) => {
-    setMake(event);
-    setModelsEnabled(false);
-    fetchModels();
+  const handleMakeChange = (event) => {
+    handleInputChange(event);
+    
+    handleInputChange({target: {name: 'model', value: ''}});
+    //updateFormData('model', '');
+    if(event.target.value == ''){
+      setModelsDisabled(true);
+    }
+    else{
+      fetchModels(event.target.value);
+      setModelsDisabled(false);
+    }
   };
   const handleModel = (event) => {
     setModel(event);
   };
 
+  const handleInputChange = (event) => {
+    setFormData(state =>({ ...state, [event.target.name]: event.target.value }));
+  };
+
   const handleSearch = () => {
     const params = new URLSearchParams();
-    make && params.append('Make', make);
-    model && params.append('Model', model);
+    formData.make.length > 0 && params.append('Make', formData.make);
+    formData.model.length > 0 && params.append('Model', formData.model);
+    params.append('IsActive', true);
     navigate(`searchResults/filters?${params.toString()}`);
   };
 
 
   return (
-    <div className='filterBox'>
-      <hr></hr>
-      <p>Gamintojas</p>
-      <DropdownButton title={make} onSelect={handleMake}>
-        {
-          makes.result.map(make => <Dropdown.Item key={make} eventKey={make}>{make}</Dropdown.Item> )
-        }
-      </DropdownButton>
-
-      <p>Modelis</p>
-      <DropdownButton title={model} onSelect={handleModel} disabled={modelsDisabled}>
-        {
-          models.result && models.result.map(model => <Dropdown.Item key={make} eventKey={model}>{model}</Dropdown.Item> )
-        }
-      </DropdownButton>
+    <Form className='filterBox'>
+      <Form.Group>
+        <Form.Label>Gamintojas</Form.Label>
+        <Form.Select
+          type="text"
+          name="make"
+          onChange={handleMakeChange}> 
+          <option name='make'></option>
+          {
+            makes.map(make => <option name='make' key={make}>{make}</option> )
+          }
+        </Form.Select>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Modelis</Form.Label>
+        <Form.Select
+          disabled={modelsDisabled}
+          type="text"
+          name="model"
+          onChange={handleInputChange}> 
+          <option name='model'></option>
+          {
+            models.map(model => <option name='model' key={model}>{model}</option> )
+          }
+        </Form.Select>
+      </Form.Group>
 
       <hr></hr>
       <Button onClick={handleSearch}>Ieškoti</Button>
-      <hr></hr>
-    </div>
+      <Button onClick={() => console.log(formData)}>forma</Button>
+      
+    </Form>
 
   );
 };

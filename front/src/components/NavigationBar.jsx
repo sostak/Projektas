@@ -1,24 +1,32 @@
-import React, { useContext} from 'react';
+import React, { useContext, useEffect} from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { HouseFill } from 'react-bootstrap-icons';
-import LoginDropdown from './LoginDropdown';
+import LoginDropdown from './LoginDropdown/LoginDropdown';
 import UserDropdown from './UserDropdown';
-import { TokenContext } from '../App';
+import { AuthContext } from '../App';
+import Cookies from 'js-cookie';
+import RegisterDropdown from './RegisterDropdown';
 
 const NavigationBar = () => {
-  const {token} = useContext(TokenContext);
+  const {token, setToken} = useContext(AuthContext);
+
+  useEffect(() => {
+    if(Cookies.get('token')){
+      setToken(Cookies.get('token'));
+    }
+  }, []);
+  
 
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
         <Navbar.Brand href="/"><HouseFill /></Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="/searchResults/filter?">Visi skelbimai</Nav.Link>
           {token && <Nav.Link href="/Upload">Įkelti naują</Nav.Link>}
         </Nav>
-        {token ? <UserDropdown></UserDropdown> : <LoginDropdown></LoginDropdown>}
+        {token ? <UserDropdown></UserDropdown> : <><LoginDropdown></LoginDropdown><RegisterDropdown></RegisterDropdown></>}
       </Container>
     </Navbar>
   );

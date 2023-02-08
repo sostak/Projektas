@@ -70,7 +70,7 @@ namespace Workspace.Infrastructure.Services
                (filters.MinYear == null || car.Year > filters.MinYear) &&
                (filters.MaxYear == null || car.Year < filters.MaxYear) &&
                (string.IsNullOrWhiteSpace(filters.Fuel) || car.Fuel == filters.Fuel) &&
-               (filters.BodyType == null || filters.BodyType.Count == 0 || filters.BodyType.Contains(car.BodyType)) &&
+               (string.IsNullOrWhiteSpace(filters.BodyType) || car.BodyType == filters.BodyType) &&
                (filters.PlugIn == null || filters.PlugIn == false || (filters.PlugIn == true && car.PlugIn == true)) &&
                (string.IsNullOrWhiteSpace(filters.DrivenWheels) || car.DrivenWheels == filters.DrivenWheels) &&
                (filters.MinPower == null || car.Power > filters.MinPower) &&
@@ -79,7 +79,8 @@ namespace Workspace.Infrastructure.Services
                (filters.MaxEngineCapacity == null || car.EngineCapacity < filters.MaxEngineCapacity) &&
                (string.IsNullOrWhiteSpace(filters.Country) || car.Country == filters.Country) &&
                (string.IsNullOrWhiteSpace(filters.City) || car.City == filters.City) &&
-               (filters.UserId == null || filters.UserId == car.UserId)).ToList();
+               (filters.UserId == null || filters.UserId == car.UserId) && 
+               (filters.IsActive == null || filters.IsActive == false || (filters.IsActive == true && car.IsActive == true))).ToList();
 
             var vehiclesDto = new List<VehicleResponseDto>();
             foreach (var vehicle in filteredVehicles)

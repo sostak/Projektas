@@ -1,18 +1,58 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './ListingCard.css';
-import { Badge, Card } from 'react-bootstrap';
+import { Badge, Button, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import apiService from '../../services/api';
+import { API_ENDPOINTS } from '../../constants/apiEndpoints';
+import { AuthContext } from '../../App';
+import Loader from '../Loader';
 
 const ListingCard = ({car}) => {
   const navigate = useNavigate();
+  const [user, setUser] = useState();
+  const [loading, setLoading] = useState(true);
+  const {token} = useContext(AuthContext);
+  const cardClass = car.isActive ? '' : 'bg-secondary text-white';
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      if(token){
+        try{
+          const config = {
+            headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${token}` }
+          };
+          const response = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.USER_GET}`, config);
+          setUser(response);
+        }
+        catch(error){
+          console.error(error);
+        }
+      }
+    };
+    fetchData();
+    setLoading(false);
+  }, []);
+
+  const handleClick = () => {
+    if(car.isActive){
+      navigate(`/listing/${car.id}`);
+    }
+  };
+
+  const handleEdit = () => {
+    console.log('edit');
+  };
+
+  if(loading){
+    return <Loader/>;
+  }
 
   return (
-    <Card onClick={() => navigate(`/listing/${car.id}`)}>
+    <Card onClick={handleClick} className={cardClass}>
       <Card.Img variant="top" src={car.images.length > 0 && car.images.filter(image => image.isThumbnail)[0].imageUrl} />
       <Card.Body>
         <Card.Title>{car.make} {car.model}</Card.Title>
-        {!car.isActive && <Card.Subtitle>NEAKTYVUS</Card.Subtitle>}
         <h3>{car.price}€</h3>
         <h4>
           {car.year && <Badge>{car.year}</Badge>}
@@ -25,13 +65,14 @@ const ListingCard = ({car}) => {
           {car.country && <Badge>{car.country}</Badge>}
           {car.city && <Badge>{car.city}</Badge>}
         </h4>
+        {(user && user.id === car.userId) && <Button onClick={handleEdit}>Redaguoti</Button>}
       </Card.Body>
     </Card>
   );
 };
 
 ListingCard.propTypes = {
-  car: PropTypes.object
+  car: PropTypes.object,
 };
 
 export default ListingCard;
