@@ -17,7 +17,6 @@ import apiService from '../../services/api';
 const Listing = () => {
   const params = useParams();
   const navigate = useNavigate();
-  //const connection = `https://localhost:7291/api/Vehicles/${params.listingId}`;
   const [car, setCar] = useState(null);
   const [thisUsersListing, setThisUsersListing] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -57,6 +56,8 @@ const Listing = () => {
   const handleSetReserved = () => {
 
   };
+
+  //cia tik pasibandymui, veliau viskas keliaus i edit listing puslapi
   const handleSetDeactivated = async (event) => {
     event.preventDefault();
     setLoading(true);

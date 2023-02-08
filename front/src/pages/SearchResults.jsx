@@ -2,7 +2,6 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Row } from 'react-bootstrap';
-//import { useNavigate } from 'react-router-dom';
 import uuid from 'react-uuid';
 import ListingCard from '../components/ListingCard/ListingCard';
 import Loader from '../components/Loader';
@@ -12,8 +11,6 @@ import { API_ENDPOINTS } from '../constants/apiEndpoints';
 const SearchResults = () => {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  //const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {

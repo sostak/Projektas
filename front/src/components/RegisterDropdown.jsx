@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Alert, Button, Dropdown, Form } from 'react-bootstrap';
 import apiService from '../services/api';
 import { API_ENDPOINTS } from '../constants/apiEndpoints';
-import Cookies from 'js-cookie';
+import login from '../services/auth';
+import { AuthContext } from '../App';
 
 const RegisterDropdown = () => {
   const [email, setEmail] = useState('');
@@ -13,6 +14,7 @@ const RegisterDropdown = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [passwordMismatch, setPasswordMismatch] = useState(false);
+  const {setToken} = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,11 +38,8 @@ const RegisterDropdown = () => {
 
     try{
       const response = await apiService.post(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.USER_REGISTER}`, data, config);
-
-      const expiration = new Date();
-      expiration.setHours(expiration.getHours() + 1);
-      Cookies.set('token', response.accessToken, { expires: expiration });
-      console.log(Cookies.get('token'));
+      console.log(response);
+      login(email, password, setToken);
     }
     catch (error){
       setError(true);

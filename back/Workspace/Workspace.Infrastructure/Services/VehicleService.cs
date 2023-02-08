@@ -60,27 +60,27 @@ namespace Workspace.Infrastructure.Services
 
         public async Task<IEnumerable<VehicleResponseDto>> GetFilteredVehicles(Filters filters)
         {
-            //pasidaryt metoduka stringui boolui ir intui i kuri paduoti car.value ir filter.value 
             var vehicles = await _vehicleRepository.GetVehicles();
             var filteredVehicles = vehicles.Where(car =>
-               (string.IsNullOrWhiteSpace(filters.Make) || car.Make == filters.Make) &&
-               (string.IsNullOrWhiteSpace(filters.Model) || car.Model == filters.Model) &&
-               (filters.MinPrice == null || car.Price > filters.MinPrice) &&
-               (filters.MaxPrice == null || car.Price < filters.MaxPrice) &&
-               (filters.MinYear == null || car.Year > filters.MinYear) &&
-               (filters.MaxYear == null || car.Year < filters.MaxYear) &&
-               (string.IsNullOrWhiteSpace(filters.Fuel) || car.Fuel == filters.Fuel) &&
-               (string.IsNullOrWhiteSpace(filters.BodyType) || car.BodyType == filters.BodyType) &&
-               (filters.PlugIn == null || filters.PlugIn == false || (filters.PlugIn == true && car.PlugIn == true)) &&
-               (string.IsNullOrWhiteSpace(filters.DrivenWheels) || car.DrivenWheels == filters.DrivenWheels) &&
-               (filters.MinPower == null || car.Power > filters.MinPower) &&
-               (filters.MaxPower == null || car.Power < filters.MaxPower) &&
-               (filters.MinEngineCapacity == null || car.EngineCapacity > filters.MinEngineCapacity) &&
-               (filters.MaxEngineCapacity == null || car.EngineCapacity < filters.MaxEngineCapacity) &&
-               (string.IsNullOrWhiteSpace(filters.Country) || car.Country == filters.Country) &&
-               (string.IsNullOrWhiteSpace(filters.City) || car.City == filters.City) &&
-               (filters.UserId == null || filters.UserId == car.UserId) && 
-               (filters.IsActive == null || filters.IsActive == false || (filters.IsActive == true && car.IsActive == true))).ToList();
+                  CheckFilter(filters.Make, car.Make) &&
+                  CheckFilter(filters.Model, car.Model) &&
+                  CheckFilter(filters.MinPrice, car.Price, (f, c) => f == null || c > f) &&
+                  CheckFilter(filters.MaxPrice, car.Price, (f, c) => f == null || c < f) &&
+                  CheckFilter(filters.MinYear, car.Year, (f, c) => f == null || c > f) &&
+                  CheckFilter(filters.MaxYear, car.Year, (f, c) => f == null || c < f) &&
+                  CheckFilter(filters.Fuel, car.Fuel) &&
+                  CheckFilter(filters.BodyType, car.BodyType) &&
+                  CheckFilter(filters.PlugIn, car.PlugIn, (f, c) => f == null || f == false || (f == true && c == true)) &&
+                  CheckFilter(filters.DrivenWheels, car.DrivenWheels) &&
+                  CheckFilter(filters.MinPower, car.Power, (f, c) => f == null || c > f) &&
+                  CheckFilter(filters.MaxPower, car.Power, (f, c) => f == null || c < f) &&
+                  CheckFilter(filters.MinEngineCapacity, car.EngineCapacity, (f, c) => f == null || c > f) &&
+                  CheckFilter(filters.MaxEngineCapacity, car.EngineCapacity, (f, c) => f == null || c < f) &&
+                  CheckFilter(filters.Country, car.Country) &&
+                  CheckFilter(filters.City, car.City) &&
+                  CheckFilter(filters.UserId, car.UserId) &&
+                  CheckFilter(filters.IsActive, car.IsActive, (f, c) => f == null || f == false || (f == true && c == true)))
+                  .ToList();
 
             var vehiclesDto = new List<VehicleResponseDto>();
             foreach (var vehicle in filteredVehicles)
@@ -90,6 +90,15 @@ namespace Workspace.Infrastructure.Services
                 vehiclesDto.Add(vehicleDto);
             }
             return vehiclesDto;
+        }
+        private static bool CheckFilter<T>(T filterValue, T carValue)
+        {
+            return filterValue == null || filterValue.Equals(carValue);
+        }
+
+        private static bool CheckFilter<T>(T filterValue, T carValue, Func<T, T, bool> customCheck)
+        {
+            return customCheck(filterValue, carValue);
         }
 
         public async Task<VehicleResponseDto> AddVehicle(CreateVehicleRequestDto vehicleDto, UserResponseDto user)

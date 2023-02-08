@@ -1,8 +1,10 @@
+//todo: sugalvoti logiskesni sprendima slaptazodzio keitimui
+// perdaryt fetchinima, kad butu naudojamos konstantos
+// pagalvot gal iseitu graziau forma pasidaryt
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import Loader from '../components/Loader';
 import Cookies from 'js-cookie';
-//import Get from '../services/APIService';
 import { useNavigate } from 'react-router-dom';
 
 const PersonalInformation = () => {

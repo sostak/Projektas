@@ -23,7 +23,6 @@ const UserDropdown = () => {
         const response = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.USER_GET}`, config);
         setUser(response);
         setLoading(false);
-        console.log(response.id);
       }
       catch(error){
         console.error(error);
@@ -43,6 +42,7 @@ const UserDropdown = () => {
 
   const handleMyListings = () => {
     navigate(`searchResults/filters?UserId=${user.id}`);
+    window.location.reload(false);
   };
 
   if(loading){

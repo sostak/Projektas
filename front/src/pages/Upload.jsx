@@ -77,6 +77,7 @@ const Upload = () => {
   };
 
   return (
+    //todo: perdaryti, kad kai kur butu pasirinkimai is konstantu, pasidaryt form group komponentus
     loading ? <Loader></Loader> :
       <Form onSubmit={handleSubmit}>
         <Form.Group>
