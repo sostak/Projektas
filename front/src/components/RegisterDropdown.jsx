@@ -4,17 +4,25 @@ import apiService from '../services/api';
 import { API_ENDPOINTS } from '../constants/apiEndpoints';
 import login from '../services/auth';
 import { AuthContext } from '../App';
+import FormInput from './FormGroup/InputFormGroup';
 
 const RegisterDropdown = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState();
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
   const [passwordMismatch, setPasswordMismatch] = useState(false);
   const {setToken} = useContext(AuthContext);
+
+  const [registrationData, setRegistrationData] = useState({
+    email: '',
+    password: '',
+    repeatPassword: '',
+    name: '',
+    surname: '',
+    poneNumber: ''
+  });
+
+  const handleInputChange = (event) => {
+    setRegistrationData({ ...registrationData, [event.target.name]: event.target.value });
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -58,36 +66,39 @@ const RegisterDropdown = () => {
 
       <Dropdown.Menu>
         <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>El. pašto adresas</Form.Label>
-            <Form.Control type="email" placeholder="El. pašto adresas" value={email} onChange={(event) => setEmail(event.target.value)} />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Slaptažodis</Form.Label>
-            <Form.Control type="password" placeholder="Slaptažodis" value={password} onChange={(event) => setPassword(event.target.value)} />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicRepeatPassword">
-            <Form.Label>Pakartokite slaptažodį</Form.Label>
-            <Form.Control type="password" placeholder="Pakartokite slaptažodį" value={repeatPassword} onChange={(event) => setRepeatPassword(event.target.value)} />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicName">
-            <Form.Label>Vardas</Form.Label>
-            <Form.Control type="text" placeholder="Vardas" value={name} onChange={(event) => setName(event.target.value)} />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicSurname">
-            <Form.Label>Pavardė</Form.Label>
-            <Form.Control type="text" placeholder="Pavardė" value={surname} onChange={(event) => setSurname(event.target.value)} />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPhoneNumber">
-            <Form.Label>Telefono numeris</Form.Label>
-            <Form.Control type="tel" placeholder="Telefono numeris" value={phoneNumber} onChange={(event) => setPhoneNumber(event.target.value)} />
-          </Form.Group>
-
+          <FormInput 
+            label='El. pašto adresas'
+            type='email'
+            name='email'
+            onChange={handleInputChange}
+          />
+          <FormInput
+            label='Slaptažodis'
+            type='password'
+            name='password'
+            onChange={handleInputChange}
+          />
+          <FormInput
+            label='Pakartokite slaptažodį'
+            type='password'
+            name='repeatPassword'
+            onChange={handleInputChange}
+          />
+          <FormInput
+            label='Vardas'
+            name='name'
+            onChange={handleInputChange}
+          />
+          <FormInput
+            label='Pavardė'
+            name='surname'
+            onChange={handleInputChange}
+          />
+          <FormInput
+            label='Telefono numeris'
+            name='phoneNumber'
+            onChange={handleInputChange}
+          />
           <hr/>
 
           {passwordMismatch && (

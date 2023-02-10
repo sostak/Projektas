@@ -3,6 +3,11 @@ import { Form, Button } from 'react-bootstrap';
 import Cookies from 'js-cookie';
 import Loader from '../components/Loader';
 import { useNavigate } from 'react-router-dom';
+import { FILTERS } from '../constants/filters';
+import FormSelect from '../components/FormGroup/SelectFormGroup';
+import FormInput from '../components/FormGroup/InputFormGroup';
+import FormFiles from '../components/FormGroup/FileFormGroup';
+import SelectThumbnail from '../components/SelectThumbnail';
 
 const Upload = () => {
   const navigate = useNavigate();
@@ -76,158 +81,106 @@ const Upload = () => {
     setImageFiles(swappedImageFiles);
   };
 
+  const handlePlugIn = (event) => {
+    let plugIn;
+    if(event.target.value === 'Taip'){
+      plugIn = true;
+    }
+    else if(event.target.value === 'Ne'){
+      plugIn = false;
+    }
+    else{
+      plugIn = null;
+    }
+    handleInputChange({target: {name: 'plugIn', value: plugIn}});
+  };
+
   return (
-    //todo: perdaryti, kad kai kur butu pasirinkimai is konstantu, pasidaryt form group komponentus
     loading ? <Loader></Loader> :
-      <Form onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label>Make</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter make"
-            name="make"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Model</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter model"
-            name="model"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Price</Form.Label>
-          <Form.Control
-            type="number"
-            placeholder="Enter price"
-            name="price"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Year</Form.Label>
-          <Form.Control
-            type="number"
-            placeholder="Enter year"
-            name="year"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Fuel</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter fuel"
-            name="fuel"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Body type</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter body type"
-            name="bodyType"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Plug in</Form.Label>
-          <Form.Check
-            type="checkbox"
-            name="plugIn"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Driven wheels</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter driven wheels"
-            name="drivenWheels"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Power</Form.Label>
-          <Form.Control
-            type="number"
-            placeholder="Enter power"
-            name="power"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>EngineCapacity</Form.Label>
-          <Form.Control
-            type="number"
-            placeholder="Enter engine capacity"
-            name="engineCapacity"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Country</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter country"
-            name="country"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Miestas</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter city"
-            name="city"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Description</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter description"
-            name="description"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Images</Form.Label>
-          <Form.Control
-            type="file"
-            placeholder="Upload up to 30 images"
-            name="imagesBase64"
-            multiple
-            onChange={handleFileChange}
-          />
-        </Form.Group>
-        {imageFiles.length > 0 && (
-          <div>
-            <p>Select a thumbnail:</p>
-            {imageFiles.map((file, index) => (
-              <div key={index}>
-                <img
-                  src={`data:image/jpeg;base64,${file}`}
-                  alt={`Image ${index + 1}`}
-                  style={{
-                    height: '100px',
-                    marginRight: '10px',
-                    cursor: 'pointer',
-                  }}
-                  onClick={() => handleThumbnailSelection(index)}
-                />
-              </div>
-            ))}
-          </div>
-        )}
-        <Button variant="primary" type="submit">
-        Submit
-        </Button>
+      <Form onSubmit={handleSubmit} className='filterBox'>
+        <FormInput
+          label='Gamintojas'
+          name='make'
+          onChange={handleInputChange}
+        />
+        <FormInput
+          label='Modelis'
+          name='model'
+          onChange={handleInputChange}
+        />
+        <FormInput
+          label='Kaina (€)'
+          name='price'
+          onChange={handleInputChange}
+        />
+        <FormInput
+          label='Metai'
+          name='year'
+          onChange={handleInputChange}
+        />
+        <FormSelect
+          label='Kuras'
+          type='text'
+          name='fuel'
+          options={FILTERS.FUEL}
+          onChange={handleInputChange}
+        />
+        <FormSelect
+          label='Kėbulo tipas'
+          type='text'
+          name='bodyType'
+          options={FILTERS.BODY_TYPE}
+          onChange={handleInputChange}
+        />
+        <FormSelect
+          label='Įkraunamas'
+          type='text'
+          name='plugIn'
+          options={['Taip', 'Ne']}
+          onChange={handlePlugIn}
+        />
+        <FormSelect
+          label='Varantys ratai'
+          type='text'
+          name='drivenWheels'
+          options={FILTERS.DRIVEN_WHEELS}
+          onChange={handleInputChange}
+        />
+        <FormInput
+          label='Galia (kW)'
+          name='power'
+          onChange={handleInputChange}
+        />
+        <FormInput
+          label='Variklio darbinis tūris (cc)'
+          name='engineCapacity'
+          onChange={handleInputChange}
+        />
+        <FormInput
+          label='Šalis'
+          name='country'
+          onChange={handleInputChange}
+        />
+        <FormInput
+          label='Miestas'
+          name='city'
+          onChange={handleInputChange}
+        />
+        <FormInput
+          label='Aprašymas'
+          name='description'
+          onChange={handleInputChange}
+        />
+        <FormFiles
+          label='Nuotraukos'
+          name='imagesBase64'
+          onChange={handleFileChange}
+        />
+        <SelectThumbnail
+          imageFiles={imageFiles}
+          handleThumbnailSelection={handleThumbnailSelection} 
+        />
+        <Button type="submit">Įkelti</Button>
       </Form>
   );
 };

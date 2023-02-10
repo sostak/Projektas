@@ -14,11 +14,9 @@ const login = async (email, password, setToken) => {
 
   try{
     const response = await apiService.post(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.USER_LOGIN}`, data, config);
+    
     setToken(response.accessToken);
-
-    const expiration = new Date();
-    expiration.setHours(expiration.getHours() + 1);
-    Cookies.set('token', response.accessToken, { expires: expiration });
+    Cookies.set('token', response.accessToken);
   }
   catch (error){
     console.error(error);

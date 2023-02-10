@@ -6,6 +6,8 @@ import './Search.css';
 import apiService from '../../services/api';
 import { API_ENDPOINTS } from '../../constants/apiEndpoints';
 import { FILTERS } from '../../constants/filters';
+import FormSelect from '../../components/FormGroup/SelectFormGroup';
+import FormDoubleInput from '../../components/FormGroup/DualInputFormGroup';
 
 const SearchResults = () => {
   const navigate = useNavigate();
@@ -125,171 +127,116 @@ const SearchResults = () => {
   };
 
   return (
-    //todo: pasidaryti komponentu aplanka form groupam, kadangi yra triju tipu, butu galima perpanaudot upload puslapy
     <Form className='filterBox'>
-      <Form.Group>
-        <Form.Label>Gamintojas</Form.Label>
-        <Form.Select
-          type='text'
-          name='make'
-          onChange={(event) => handleParentChange(event, 'model', setModelsDisabled, API_ENDPOINTS.MODELS, setModels)}> 
-          <option></option>
-          {
-            makes.map(make => <option key={make}>{make}</option> )
-          }
-        </Form.Select>
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Modelis</Form.Label>
-        <Form.Select
-          disabled={modelsDisabled}
-          type='text'
-          name='model'
-          onChange={handleInputChange}> 
-          <option name='model'></option>
-          {
-            models.map(model => <option name='model' key={model}>{model}</option> )
-          }
-        </Form.Select>
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Kaina (€)</Form.Label>
-        <Form.Control
-          type='text'
-          placeholder='Nuo'
-          name='minPrice'
-          onChange={handleInputChange}
-        />
-        <Form.Control
-          type='text'
-          placeholder='Iki'
-          name='maxPrice'
-          onChange={handleInputChange}
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Metai</Form.Label>
-        <Form.Control
-          type='text'
-          placeholder='Nuo'
-          name='minYear'
-          onChange={handleInputChange}
-        />
-        <Form.Control
-          type='text'
-          placeholder='Iki'
-          name='maxYear'
-          onChange={handleInputChange}
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Kuras</Form.Label>
-        <Form.Select
-          type='text'
-          name='fuel'
-          onChange={handleInputChange}> 
-          <option></option>
-          {
-            FILTERS.FUEL.map(fuel => <option key={fuel}>{fuel}</option> )
-          }
-        </Form.Select>
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Kėbulo tipas</Form.Label>
-        <Form.Select
-          type='text'
-          name='bodyType'
-          onChange={handleInputChange}> 
-          <option></option>
-          {
-            FILTERS.BODY_TYPE.map(bodyType => <option key={bodyType}>{bodyType}</option> )
-          }
-        </Form.Select>
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Įkraunamas</Form.Label>
-        <Form.Select
-          type='text'
-          name='plugIn'
-          onChange={handlePlugIn}> 
-          <option></option>
-          <option>Taip</option>
-          <option>Ne</option>
-        </Form.Select>
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Varantys ratai</Form.Label>
-        <Form.Select
-          type='text'
-          name='drivenWheels'
-          onChange={handleInputChange}> 
-          <option></option>
-          {
-            FILTERS.DRIVEN_WHEELS.map(drivenWheels => <option key={drivenWheels}>{drivenWheels}</option> )
-          }
-        </Form.Select>
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Galia (kW)</Form.Label>
-        <Form.Control
-          type='text'
-          placeholder='Nuo'
-          name='minPower'
-          onChange={handleInputChange}
-        />
-        <Form.Control
-          type='text'
-          placeholder='Iki'
-          name='maxPower'
-          onChange={handleInputChange}
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Variklio darbinis tūris (cc)</Form.Label>
-        <Form.Control
-          type='text'
-          placeholder='Nuo'
-          name='minEngineCapacity'
-          onChange={handleInputChange}
-        />
-        <Form.Control
-          type='text'
-          placeholder='Iki'
-          name='maxEngineCapacity'
-          onChange={handleInputChange}
-        />
-      </Form.Group>
+      <FormSelect
+        label='Gamintojas'
+        type='text'
+        name='make'
+        options={makes}
+        onChange={(event) => handleParentChange(event, 'model', setModelsDisabled, API_ENDPOINTS.MODELS, setModels)}
+      />
 
-      <Form.Group>
-        <Form.Label>Šalis</Form.Label>
-        <Form.Select
-          type='text'
-          name='country'
-          onChange={(event) => handleParentChange(event, 'city', setCitiesDisabled, API_ENDPOINTS.CITIES, setCities)}> 
-          <option></option>
-          {
-            countries.map(country => <option key={country}>{country}</option> )
-          }
-        </Form.Select>
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>City</Form.Label>
-        <Form.Select
-          disabled={citiesDisabled}
-          type='text'
-          name='city'
-          onChange={handleInputChange}> 
-          <option></option>
-          {
-            cities.map(city => <option key={city}>{city}</option> )
-          }
-        </Form.Select>
-      </Form.Group>
+      <FormSelect
+        label='Modelis'
+        disabled={modelsDisabled}
+        type='text'
+        name='model'
+        options={models}
+        onChange={handleInputChange}
+      />
+
+      <FormDoubleInput
+        label='Kaina (€)'
+        type='text'
+        placeholder1='Nuo'
+        name1='minPrice'
+        placeholder2='Iki'
+        name2='maxPrice'
+        onChange={handleInputChange}
+      />
+
+      <FormDoubleInput
+        label='Metai'
+        type='text'
+        placeholder1='Nuo'
+        name1='minYear'
+        placeholder2='Iki'
+        name2='maxYear'
+        onChange={handleInputChange}
+      />
+
+      <FormSelect
+        label='Kuras'
+        type='text'
+        name='fuel'
+        options={FILTERS.FUEL}
+        onChange={handleInputChange}
+      />
+
+      <FormSelect
+        label='Kėbulo tipas'
+        type='text'
+        name='bodyType'
+        options={FILTERS.BODY_TYPE}
+        onChange={handleInputChange}
+      />
+
+      <FormSelect
+        label='Įkraunamas'
+        type='text'
+        name='plugIn'
+        options={['Taip', 'Ne']}
+        onChange={handlePlugIn}
+      />
+
+      <FormSelect
+        label='Varantys ratai'
+        type='text'
+        name='drivenWheels'
+        options={FILTERS.DRIVEN_WHEELS}
+        onChange={handleInputChange}
+      />
+
+      <FormDoubleInput
+        label='Galia (kW)'
+        type='text'
+        placeholder1='Nuo'
+        name1='minPower'
+        placeholder2='Iki'
+        name2='maxPower'
+        onChange={handleInputChange}
+      />
+
+      <FormDoubleInput
+        label='Variklio darbinis tūris (cc)'
+        type='text'
+        placeholder1='Nuo'
+        name1='minEngineCapacity'
+        placeholder2='Iki'
+        name2='maxEngineCapacity'
+        onChange={handleInputChange}
+      />
+
+      <FormSelect
+        label='Šalis'
+        type='text'
+        name='country'
+        options={countries}
+        onChange={(event) => handleParentChange(event, 'city', setCitiesDisabled, API_ENDPOINTS.CITIES, setCities)}
+      />
+
+      <FormSelect
+        label='Miestas'
+        disabled={citiesDisabled}
+        type='text'
+        name='city'
+        options={cities}
+        onChange={handleInputChange}
+      />
 
       <hr></hr>
       <Button onClick={handleSearch}>Ieškoti</Button>
     </Form>
-
   );
 };
 
