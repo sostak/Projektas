@@ -4,49 +4,33 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Loader from '../../components/Loader';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import ImageGallery from 'react-image-gallery';
 import TableRow from '../../components/TableRow';
 import Cookies from 'js-cookie';
 import { AuthContext } from '../../App';
-import { API_ENDPOINTS } from '../../constants/apiEndpoints';
-import apiService from '../../services/api';
+import serverService from '../../services/server';
 
 const Listing = () => {
   const params = useParams();
-  const navigate = useNavigate();
   const [car, setCar] = useState(null);
   const [thisUsersListing, setThisUsersListing] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const {token} = useContext(AuthContext);
 
 
   useEffect(() => {
-    try{
-      const fetchData = async () => {
-        const carResponse = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.VEHICLE}/${params.listingId}`);
-        setCar(carResponse.result);
+    const fetchData = async () => {
+      const response = await serverService.fetchListing(params.listingId, token, setThisUsersListing);
+      setCar(response);
+      setLoading(false);
+    };
+    fetchData();
+  }, [token]);
 
-        if(token){
-          const config = {
-            headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${token}` }
-          };
-          const userResponse = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.USER_GET}`, config);
-          if(carResponse.result.userId === userResponse.id){
-            setThisUsersListing(true);
-          }
-        }
-      };
-      fetchData();
-    }
-    catch(error){
-      navigate('*');
-    }
-  }, []);
-
-  if(!car){
+  if(loading){
     return <Loader></Loader>;
   }
 

@@ -26,7 +26,14 @@ const NavigationBar = () => {
         <Nav className="me-auto">
           {token && <Nav.Link href="/Upload">Įkelti naują</Nav.Link>}
         </Nav>
-        {token ? <UserDropdown></UserDropdown> : <><LoginDropdown></LoginDropdown><RegisterDropdown></RegisterDropdown></>}
+        {token ? 
+          <UserDropdown/>
+          :
+          <>
+            <LoginDropdown/>
+            <RegisterDropdown/>
+          </>
+        }
       </Container>
     </Navbar>
   );

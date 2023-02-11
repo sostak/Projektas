@@ -3,9 +3,8 @@ import { Dropdown, DropdownButton, Button } from 'react-bootstrap';
 import Cookies from 'js-cookie';
 import Loader from './Loader';
 import { useNavigate } from 'react-router-dom';
-import apiService from '../services/api';
-import { API_ENDPOINTS } from '../constants/apiEndpoints';
 import { AuthContext } from '../App';
+import serverService from '../services/server';
 
 const UserDropdown = () => {
   const navigate = useNavigate();
@@ -16,7 +15,7 @@ const UserDropdown = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try{
+      /*try{
         const config = {
           headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${token}` }
         };
@@ -26,7 +25,10 @@ const UserDropdown = () => {
       }
       catch(error){
         console.error(error);
-      }
+      }*/
+      const response = await serverService.fetchUser(token);
+      setUser(response);
+      setLoading(false);
     };
     fetchData();
   }, []);

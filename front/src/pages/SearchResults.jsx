@@ -5,25 +5,20 @@ import { Row } from 'react-bootstrap';
 import uuid from 'react-uuid';
 import ListingCard from '../components/ListingCard/ListingCard';
 import Loader from '../components/Loader';
-import apiService from '../services/api';
-import { API_ENDPOINTS } from '../constants/apiEndpoints';
+import serverService from '../services/server';
 
 const SearchResults = () => {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try{
-        const listingsRequest = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.VEHICLES_FILTER}${window.location.search}`);
-        setListings(listingsRequest);
-        setLoading(false);
-      }
-      catch(error){
-        console.error(error);
-      }
+    const fetchListings = async () => {
+      const response = await serverService.fetchFilteredListings(window.location.search);
+      setListings(response);
+      setLoading(false);
     };
-    fetchData();
+
+    fetchListings();
   }, []);
 
   if(loading){

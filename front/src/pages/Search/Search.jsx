@@ -9,6 +9,8 @@ import { FILTERS } from '../../constants/filters';
 import FormSelect from '../../components/FormGroup/SelectFormGroup';
 import FormDoubleInput from '../../components/FormGroup/DualInputFormGroup';
 
+import formService from '../../services/form';
+
 const SearchResults = () => {
   const navigate = useNavigate();
 
@@ -20,7 +22,7 @@ const SearchResults = () => {
   const [modelsDisabled, setModelsDisabled] = useState(true);
   const [citiesDisabled, setCitiesDisabled] = useState(true);
 
-  const [formData, setFormData] = useState({
+  const [filtersData, setFiltersData] = useState({
     make: '',
     model: '',
     minPrice: 0,
@@ -69,59 +71,32 @@ const SearchResults = () => {
     return <Loader></Loader>;
   }
 
-  const handleParentChange = (event, name, setChildDisabled, endpoint, setChildValue) => {
-    handleInputChange(event);
-    handleInputChange({target: {name: name, value: ''}});
-
-    if(event.target.value == ''){
-      setChildDisabled(true);
-    }
-    else{
-      fetchChild(event.target.value, endpoint, setChildValue);
-      setChildDisabled(false);
-    }
-  };
-
-  const handlePlugIn = (event) => {
-    let plugIn;
-    if(event.target.value === 'Taip'){
-      plugIn = true;
-    }
-    else if(event.target.value === 'Ne'){
-      plugIn = false;
-    }
-    else{
-      plugIn = null;
-    }
-    handleInputChange({target: {name: 'plugIn', value: plugIn}});
-  };
-
   const handleInputChange = (event) => {
-    setFormData(state =>({ ...state, [event.target.name]: event.target.value }));
+    setFiltersData(state =>({ ...state, [event.target.name]: event.target.value }));
   };
 
   const handleSearch = () => {
     const params = new URLSearchParams();
-    addKeyValue(params, 'Make', formData.make);
-    addKeyValue(params, 'Model', formData.model);
-    addKeyValue(params, 'MinPrice', formData.minPrice);
-    addKeyValue(params, 'MaxPrice', formData.maxPrice);
-    addKeyValue(params, 'MinYear', formData.minYear);
-    addKeyValue(params, 'MaxYear', formData.maxYear);
-    addKeyValue(params, 'Fuel', formData.fuel);
-    addKeyValue(params, 'BodyType', formData.bodyType);
-    addKeyValue(params, 'PlugIn', formData.plugIn);
-    addKeyValue(params, 'DrivenWheels', formData.drivenWheels);
-    addKeyValue(params, 'MinPower', formData.minPower);
-    addKeyValue(params, 'MaxPower', formData.maxPower);
-    addKeyValue(params, 'MinEngineCapacity', formData.minEngineCapacity);
-    addKeyValue(params, 'MaxEngineCapacity', formData.maxEngineCapacity);
-    addKeyValue(params, 'Country', formData.country);
-    addKeyValue(params, 'City', formData.city);  
+    addKeyValue(params, 'Make', filtersData.make);
+    addKeyValue(params, 'Model', filtersData.model);
+    addKeyValue(params, 'MinPrice', filtersData.minPrice);
+    addKeyValue(params, 'MaxPrice', filtersData.maxPrice);
+    addKeyValue(params, 'MinYear', filtersData.minYear);
+    addKeyValue(params, 'MaxYear', filtersData.maxYear);
+    addKeyValue(params, 'Fuel', filtersData.fuel);
+    addKeyValue(params, 'BodyType', filtersData.bodyType);
+    addKeyValue(params, 'PlugIn', filtersData.plugIn);
+    addKeyValue(params, 'DrivenWheels', filtersData.drivenWheels);
+    addKeyValue(params, 'MinPower', filtersData.minPower);
+    addKeyValue(params, 'MaxPower', filtersData.maxPower);
+    addKeyValue(params, 'MinEngineCapacity', filtersData.minEngineCapacity);
+    addKeyValue(params, 'MaxEngineCapacity', filtersData.maxEngineCapacity);
+    addKeyValue(params, 'Country', filtersData.country);
+    addKeyValue(params, 'City', filtersData.city);  
     params.append('IsActive', true);
     navigate(`searchResults/filters?${params.toString()}`);
   };
-
+  
   const addKeyValue = (params, key, value) => {
     value !== null && value !== '' && value !== 0 && params.append(key, value);
   };
@@ -133,9 +108,8 @@ const SearchResults = () => {
         type='text'
         name='make'
         options={makes}
-        onChange={(event) => handleParentChange(event, 'model', setModelsDisabled, API_ENDPOINTS.MODELS, setModels)}
+        onChange={(event) => formService.handleParentChange(event, 'model', setModelsDisabled, API_ENDPOINTS.MODELS, setModels, fetchChild, handleInputChange)}
       />
-
       <FormSelect
         label='Modelis'
         disabled={modelsDisabled}
@@ -144,7 +118,6 @@ const SearchResults = () => {
         options={models}
         onChange={handleInputChange}
       />
-
       <FormDoubleInput
         label='Kaina (€)'
         type='text'
@@ -154,7 +127,6 @@ const SearchResults = () => {
         name2='maxPrice'
         onChange={handleInputChange}
       />
-
       <FormDoubleInput
         label='Metai'
         type='text'
@@ -164,7 +136,6 @@ const SearchResults = () => {
         name2='maxYear'
         onChange={handleInputChange}
       />
-
       <FormSelect
         label='Kuras'
         type='text'
@@ -172,7 +143,6 @@ const SearchResults = () => {
         options={FILTERS.FUEL}
         onChange={handleInputChange}
       />
-
       <FormSelect
         label='Kėbulo tipas'
         type='text'
@@ -180,15 +150,13 @@ const SearchResults = () => {
         options={FILTERS.BODY_TYPE}
         onChange={handleInputChange}
       />
-
       <FormSelect
         label='Įkraunamas'
         type='text'
         name='plugIn'
         options={['Taip', 'Ne']}
-        onChange={handlePlugIn}
+        onChange={(event) => formService.setPlugIn(event, handleInputChange)}
       />
-
       <FormSelect
         label='Varantys ratai'
         type='text'
@@ -196,7 +164,6 @@ const SearchResults = () => {
         options={FILTERS.DRIVEN_WHEELS}
         onChange={handleInputChange}
       />
-
       <FormDoubleInput
         label='Galia (kW)'
         type='text'
@@ -206,7 +173,6 @@ const SearchResults = () => {
         name2='maxPower'
         onChange={handleInputChange}
       />
-
       <FormDoubleInput
         label='Variklio darbinis tūris (cc)'
         type='text'
@@ -216,15 +182,13 @@ const SearchResults = () => {
         name2='maxEngineCapacity'
         onChange={handleInputChange}
       />
-
       <FormSelect
         label='Šalis'
         type='text'
         name='country'
         options={countries}
-        onChange={(event) => handleParentChange(event, 'city', setCitiesDisabled, API_ENDPOINTS.CITIES, setCities)}
+        onChange={(event) => formService.handleParentChange(event, 'city', setCitiesDisabled, API_ENDPOINTS.CITIES, setCities, fetchChild, handleInputChange)}
       />
-
       <FormSelect
         label='Miestas'
         disabled={citiesDisabled}
@@ -233,7 +197,6 @@ const SearchResults = () => {
         options={cities}
         onChange={handleInputChange}
       />
-
       <hr></hr>
       <Button onClick={handleSearch}>Ieškoti</Button>
     </Form>

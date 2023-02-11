@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+const instance = axios.create({
+  headers: { 'Content-Type': 'application/json' }
+});
+
 const get = async (url, config = null) => {
-  const response = await axios.get(url, config);
+  const response = await instance.get(url, { ...config });
   return response.data;
 };
 

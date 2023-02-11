@@ -69,10 +69,8 @@ const Upload = () => {
     }
     );
     const responseData = await response.json();
-    console.log(responseData);
-    navigate(`/listing/${responseData.id}`);
 
-    setLoading(false);
+    navigate(`/listing/${responseData.id}`);
   };
 
   const handleThumbnailSelection = (index) => {

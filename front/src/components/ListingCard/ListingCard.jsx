@@ -3,10 +3,9 @@ import './ListingCard.css';
 import { Badge, Button, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import apiService from '../../services/api';
-import { API_ENDPOINTS } from '../../constants/apiEndpoints';
 import { AuthContext } from '../../App';
 import Loader from '../Loader';
+import serverService from '../../services/server';
 
 const ListingCard = ({car}) => {
   const navigate = useNavigate();
@@ -17,21 +16,11 @@ const ListingCard = ({car}) => {
   
   useEffect(() => {
     const fetchData = async () => {
-      if(token){
-        try{
-          const config = {
-            headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${token}` }
-          };
-          const response = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.USER_GET}`, config);
-          setUser(response);
-        }
-        catch(error){
-          console.error(error);
-        }
-      }
+      const response = await serverService.fetchUser(token);
+      setUser(response);
+      setLoading(false);
     };
     fetchData();
-    setLoading(false);
   }, []);
 
   const handleClick = () => {

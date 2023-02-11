@@ -1,16 +1,24 @@
 import React, { useContext, useState } from 'react';
 import { Button, Dropdown, Form } from 'react-bootstrap';
 import { AuthContext } from '../../App';
-import login from '../../services/auth';
+import authService from '../../services/auth';
+import FormInput from '../FormGroup/InputFormGroup';
 
 const LoginDropdown = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [loginData, setLoginData] = useState({
+    email: '',
+    password: ''
+  });
   const {setToken} = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    login(email, password, setToken);
+    authService.login(loginData, setToken);
+  };
+
+  const handleInputChange = (event) => {
+    setLoginData({ ...loginData, [event.target.name]: event.target.value });
+    console.log(loginData);
   };
 
   return (
@@ -21,17 +29,19 @@ const LoginDropdown = () => {
 
       <Dropdown.Menu>
         <Form onSubmit={handleSubmit}>
-          <Form.Group>
-            <Form.Label>El. pašto adresas</Form.Label>
-            <Form.Control type="email" placeholder="El. pašto adresas" value={email} onChange={(event) => setEmail(event.target.value)} />
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Label>Slaptažodis</Form.Label>
-            <Form.Control type="password" placeholder="Slaptažodis" value={password} onChange={(event) => setPassword(event.target.value)} />
-          </Form.Group>
-
-          <Button variant="primary" type="submit">
+          <FormInput
+            label='El. pašto adresas'
+            type='email'
+            name='email'
+            onChange={handleInputChange}
+          />
+          <FormInput
+            label='Slaptažodis'
+            type='password'
+            name='password'
+            onChange={handleInputChange}
+          />
+          <Button type='submit'>
             Prisijungti
           </Button>
         </Form>

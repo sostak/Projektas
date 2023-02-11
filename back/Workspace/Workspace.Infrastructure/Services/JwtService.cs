@@ -46,7 +46,8 @@ namespace Workspace.Infrastructure.Services
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.Add(_jwtSettings.TokenLifetime),
+                //Couldn't find where lifetime is set, so for now it is what it is 
+                Expires = DateTime.Now.Add(_jwtSettings.TokenLifetime).AddHours(5),
                 SigningCredentials = new SigningCredentials(_securityKey, HashAlgorithm),
             };
 
