@@ -6,7 +6,6 @@ import FormInput from './FormGroup/InputFormGroup';
 import Loader from './Loader';
 
 const RegisterDropdown = () => {
-  //const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const [passwordMismatch, setPasswordMismatch] = useState(false);
   const {setToken} = useContext(AuthContext);

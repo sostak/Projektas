@@ -15,17 +15,6 @@ const UserDropdown = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      /*try{
-        const config = {
-          headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${token}` }
-        };
-        const response = await apiService.get(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.USER_GET}`, config);
-        setUser(response);
-        setLoading(false);
-      }
-      catch(error){
-        console.error(error);
-      }*/
       const response = await serverService.fetchUser(token);
       setUser(response);
       setLoading(false);

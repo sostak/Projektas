@@ -19,7 +19,6 @@ namespace Workspace.Core.Dto.Requests
         public int? EngineCapacity { get; set; }
         public string? Country { get; set; }
         public string? City { get; set; }
-        public string? ThumbnailBase64 { get; set; }
         public string? Description { get; set; }
     }
 }

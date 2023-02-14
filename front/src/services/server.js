@@ -99,4 +99,36 @@ const updateUser = async (token, userData) => {
   }
 };
 
-export default {fetchFilteredListings, fetchListing, fetchUser, updatePassword, updateUser};
+const uploadListing = async (token, formData, imageFiles) => {
+  const config = {
+    headers: { 'Authorization' : `Bearer ${token}` }
+  };
+  const carListing = {
+    ...formData,
+    imagesBase64: imageFiles.filter((image) => image !== imageFiles[0]),
+    thumbnailBase64: imageFiles[0],
+  };
+  const response = await apiService.post(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.VEHICLE}`, carListing, config);
+
+  return response;
+};
+
+const updateListing = async (token, formData) => {
+  // eslint-disable-next-line no-unused-vars
+  const { thumbnail, images, phoneNumber, userId, ...request } = formData;
+  request.price = Number(request.price);
+  request.year = Number(request.year);
+  request.power = Number(request.power);
+  request.engineCapacity = Number(request.engineCapacity);
+  try {
+    const config = {
+      headers: { 'Authorization': `Bearer ${token}` }
+    };
+    await apiService.put(`${process.env.REACT_APP_API_URL}${API_ENDPOINTS.VEHICLE}`, request, config);
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+};
+
+export default {fetchFilteredListings, fetchListing, fetchUser, updatePassword, updateUser, uploadListing, updateListing};

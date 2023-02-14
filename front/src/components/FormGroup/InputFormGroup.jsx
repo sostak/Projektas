@@ -2,6 +2,7 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
+// eslint-disable-next-line react/prop-types
 const InputFormGroup = ({ label, name, placeholder, onChange, type='text', defaultValue='', disabled=false }) => (
   <Form.Group>
     <Form.Label>{label}</Form.Label>
@@ -22,8 +23,7 @@ InputFormGroup.propTypes = {
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   type: PropTypes.string,
-  defaultValue: PropTypes.string,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
 };
 
 export default InputFormGroup;

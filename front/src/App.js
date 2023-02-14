@@ -8,6 +8,7 @@ import SearchResults from './pages/SearchResults.jsx';
 import Search from './pages/Search/Search.jsx';
 import Upload from './pages/Upload.jsx';
 import PersonalInformation from './pages/PersonalInformation';
+import Edit from './pages/Edit';
 
 export const AuthContext = createContext();
 
@@ -19,11 +20,12 @@ function App() {
         <NavigationBar/>
         <Routes>
           <Route index element={<Search />} />
-          <Route path="searchResults/:filters" element={<SearchResults />} />
-          <Route path="upload" element={<Upload />} />
-          <Route path="listing/:listingId" element={<Listing />} />
-          <Route path="personalInformation" element={<PersonalInformation />} />
-          <Route path="*" element={<NoPage />} />
+          <Route path='searchResults/:filters' element={<SearchResults />} />
+          <Route path='upload' element={<Upload />} />
+          <Route path='listing/:listingId' element={<Listing />} />
+          <Route path='personalInformation' element={<PersonalInformation />} />
+          <Route path='edit/:listingId' element={<Edit />} />
+          <Route path='*' element={<NoPage />} />
         </Routes>
       </AuthContext.Provider>
     </BrowserRouter>

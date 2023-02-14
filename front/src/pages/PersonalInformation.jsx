@@ -18,8 +18,6 @@ const PersonalInformation = () => {
     window.location.reload();
   };
   
-  //const navigate = useNavigate();
-
   const [userData, setUserData] = useState({
     email: '',
     oldPassword: '',
@@ -29,6 +27,16 @@ const PersonalInformation = () => {
     surname: '',
     phoneNumber: ''
   });
+
+  useEffect(() => {
+    const checkToken = setTimeout(() => {
+      if (!token) {
+        navigate('/');
+      }
+    }, 500);
+
+    return () => clearTimeout(checkToken);
+  }, [token, navigate]);
   
   useEffect(() => {
     const fetchData = async () => {

@@ -29,8 +29,9 @@ const ListingCard = ({car}) => {
     }
   };
 
-  const handleEdit = () => {
-    console.log('edit');
+  const handleEdit = (event) => {
+    event.stopPropagation(); 
+    navigate(`/edit/${car.id}`);
   };
 
   if(loading){

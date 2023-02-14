@@ -4,12 +4,11 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Loader from '../../components/Loader';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import ImageGallery from 'react-image-gallery';
 import TableRow from '../../components/TableRow';
-import Cookies from 'js-cookie';
 import { AuthContext } from '../../App';
 import serverService from '../../services/server';
 
@@ -19,7 +18,7 @@ const Listing = () => {
   const [thisUsersListing, setThisUsersListing] = useState(false);
   const [loading, setLoading] = useState(true);
   const {token} = useContext(AuthContext);
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,40 +34,9 @@ const Listing = () => {
   }
 
   const handleEdit = () => {
-    console.log('edit');
-  };
-  const handleSetReserved = () => {
-
+    navigate(`/edit/${car.id}`);
   };
 
-  //cia tik pasibandymui, veliau viskas keliaus i edit listing puslapi
-  const handleSetDeactivated = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    const request = {
-      isActive: false,
-      id: car.id,
-    };
-
-    try{
-      const response = await fetch('https://localhost:7291/api/Vehicles', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json', 'Authorization' : `Bearer ${Cookies.get('token')}` },
-        body: JSON.stringify(request)
-      }
-      );
-      const responseData = await response.json();
-      console.log(responseData);
-    }
-    catch (error){
-      console.log(error);
-    }
-    finally{
-      setLoading(false);
-    }
-  };
-
-  console.log(car);
   const galleryImages = car.images.map( image => ({ original: image.imageUrl, thumbnail: image.imageUrl }));
   
   return (
@@ -100,9 +68,7 @@ const Listing = () => {
             </tr>
           </tbody>
         </Table>
-        {thisUsersListing && <Button onClick={handleEdit} variant='danger'>Redaguoti</Button>}
-        {thisUsersListing && <Button onClick={handleSetReserved}>Rezervuoti</Button>}
-        {thisUsersListing && <Button onClick={handleSetDeactivated}>Deaktyvuoti</Button>}
+        {thisUsersListing && <Button onClick={handleEdit}>Redaguoti</Button>}
       </div>
   );
 };

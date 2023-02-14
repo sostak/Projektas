@@ -1,15 +1,15 @@
-const setPlugIn = (event, handleInputChange) => {
-  let plugIn;
+const setBool = (event, handleInputChange) => {
+  let bool;
   if(event.target.value === 'Taip'){
-    plugIn = true;
+    bool = true;
   }
   else if(event.target.value === 'Ne'){
-    plugIn = false;
+    bool = false;
   }
   else{
-    plugIn = null;
+    bool = null;
   }
-  handleInputChange({target: {name: 'plugIn', value: plugIn}});
+  handleInputChange({target: {name: event.target.name, value: bool}});
 };
   
 const handleParentChange = (event, name, setChildDisabled, endpoint, setChildValue, fetchChild, handleInputChange) => {
@@ -25,4 +25,4 @@ const handleParentChange = (event, name, setChildDisabled, endpoint, setChildVal
   }
 };
 
-export default { setPlugIn, handleParentChange};
+export default { setBool, handleParentChange};
